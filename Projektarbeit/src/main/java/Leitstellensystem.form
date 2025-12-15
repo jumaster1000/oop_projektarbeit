@@ -225,47 +225,6 @@
           <text value="Rauch aus Fenster sichtbar; POL vor Ort"/>
         </properties>
       </component>
-      <component id="b62d5" class="javax.swing.JComboBox" binding="filternComboBox">
-        <constraints>
-          <grid row="5" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <model>
-            <item value="- Spalte auswählen"/>
-            <item value="Stichwort"/>
-            <item value="Adresse"/>
-            <item value="Bemerkung"/>
-            <item value="Ort"/>
-            <item value="MiG"/>
-            <item value="Signalfahrt"/>
-          </model>
-        </properties>
-      </component>
-      <component id="ddba8" class="javax.swing.JTextField" binding="filterTextField">
-        <constraints>
-          <grid row="6" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
-            <minimum-size width="220" height="-1"/>
-          </grid>
-        </constraints>
-        <properties/>
-      </component>
-      <component id="df5b1" class="javax.swing.JButton" binding="filterButton">
-        <constraints>
-          <grid row="7" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Filter setzen"/>
-        </properties>
-      </component>
-      <component id="93162" class="javax.swing.JLabel" binding="fiterLabel">
-        <constraints>
-          <grid row="4" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <font style="1"/>
-          <text value="Filtern:"/>
-        </properties>
-      </component>
       <hspacer id="f8ffa">
         <constraints>
           <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -288,6 +247,55 @@
           </grid>
         </constraints>
       </hspacer>
+      <component id="93162" class="javax.swing.JLabel" binding="fiterLabel">
+        <constraints>
+          <grid row="3" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font style="1"/>
+          <text value="Filtern:"/>
+        </properties>
+      </component>
+      <component id="b62d5" class="javax.swing.JComboBox" binding="filternComboBox">
+        <constraints>
+          <grid row="4" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <model>
+            <item value="- Spalte auswählen"/>
+            <item value="Stichwort"/>
+            <item value="Adresse"/>
+            <item value="Bemerkung"/>
+            <item value="Ort"/>
+            <item value="MiG"/>
+            <item value="Signalfahrt"/>
+          </model>
+        </properties>
+      </component>
+      <component id="ddba8" class="javax.swing.JTextField" binding="filterTextField">
+        <constraints>
+          <grid row="5" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <minimum-size width="220" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="df5b1" class="javax.swing.JButton" binding="filterButton">
+        <constraints>
+          <grid row="6" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Filter setzen"/>
+        </properties>
+      </component>
+      <component id="e27c8" class="javax.swing.JButton" binding="ausgewählteEinsätzeBeendenButton" default-binding="true">
+        <constraints>
+          <grid row="7" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Ausgewählte Einsätze beenden"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>
