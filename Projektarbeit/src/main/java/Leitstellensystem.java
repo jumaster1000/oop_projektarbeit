@@ -57,6 +57,7 @@ public class Leitstellensystem extends JFrame {
 
     // Logo
     private JLabel leitstelleIcon;
+    private JLabel suchbegriffEingebenLabel;
 
     // ==============================
     // Konstruktor
@@ -127,14 +128,14 @@ public class Leitstellensystem extends JFrame {
 
         einsatzListe.add(new Einsatz(
                 "Karlstraße", "5", 89231, "Neu-Ulm",
-                "VU mit PKW", false,
-                "THL 2 – Verkehrsunfall", false
+                "VU mit PKW", true,
+                "H2 – VU PKW (Person eingekl.)", true
         ));
 
         einsatzListe.add(new Einsatz(
-                "Söflinger Straße", "102", 89073, "Ulm",
-                "Mehrere Anrufe; Flammen sichtbar", true,
-                "B3 - Dachstuhlbrand", true
+                "Wileystraße", "1", 89231, "Neu-Ulm",
+                "Hauptmeldernummer 148; HochschuleNU", false,
+                "B2 - Brandmeldeanlage", true
         ));
     }
 

@@ -82,6 +82,12 @@
             <item value="B2 - Brand Zimmer"/>
             <item value="B2 - Haushaltsrauchmelder"/>
             <item value="B3 - Dachstuhlbrand"/>
+            <item value="H0 - Ölspur"/>
+            <item value="H1 - VU PKW"/>
+            <item value="H2 - VU PKW (Person eingekl.)"/>
+            <item value="H3 - VU PKW 2+"/>
+            <item value="H3 - VU LKW"/>
+            <item value="H4 - VU Zug"/>
           </model>
         </properties>
       </component>
@@ -249,7 +255,7 @@
       </hspacer>
       <component id="93162" class="javax.swing.JLabel" binding="fiterLabel">
         <constraints>
-          <grid row="3" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <font style="1"/>
@@ -258,7 +264,7 @@
       </component>
       <component id="b62d5" class="javax.swing.JComboBox" binding="filternComboBox">
         <constraints>
-          <grid row="4" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <model>
@@ -282,7 +288,7 @@
       </component>
       <component id="df5b1" class="javax.swing.JButton" binding="filterButton">
         <constraints>
-          <grid row="6" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Filter setzen"/>
@@ -290,10 +296,18 @@
       </component>
       <component id="e27c8" class="javax.swing.JButton" binding="einsaetzeBeendenButton">
         <constraints>
-          <grid row="7" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Alle Einsätze beenden"/>
+        </properties>
+      </component>
+      <component id="8b965" class="javax.swing.JLabel" binding="suchbegriffEingebenLabel">
+        <constraints>
+          <grid row="4" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Suchbegriff eingeben:"/>
         </properties>
       </component>
     </children>
