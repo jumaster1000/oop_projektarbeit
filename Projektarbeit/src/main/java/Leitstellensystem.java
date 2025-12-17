@@ -40,7 +40,7 @@ public class Leitstellensystem extends JFrame {
     private JLabel laufendeEinsaetzeLabel;
     private JTable einsatzTable;
     private DefaultTableModel tableModel;
-    private ArrayList<Einsatz> einsatzListe;
+    private ArrayList<Einsatz> einsatzListe = new ArrayList<>();;
 
         // Filter
     private JLabel fiterLabel;
@@ -56,8 +56,8 @@ public class Leitstellensystem extends JFrame {
     // ==============================
     // Konstruktor
     // ==============================
-    public Leitstellensystem(ArrayList<Einsatz> einsatzListe){
-        this.einsatzListe = einsatzListe;
+    public Leitstellensystem(){
+        initObjekte();
 
         // Spalten definieren
         String[] columnNames = {
@@ -110,6 +110,26 @@ public class Leitstellensystem extends JFrame {
         filterButton.addActionListener(e -> { filtern();});
     }
 
+    public void initObjekte(){
+        einsatzListe.add(new Einsatz(
+                "Münchner Straße", "12", 89073, "Ulm",
+                "Nachbar sieht Rauch", false,
+                "B2 – Rauchentwicklung", true
+        ));
+
+        einsatzListe.add(new Einsatz(
+                "Karlstraße", "5", 89231, "Neu-Ulm",
+                "VU mit PKW", false,
+                "THL 2 – Verkehrsunfall", false
+        ));
+
+        einsatzListe.add(new Einsatz(
+                "Söflinger Straße", "102", 89073, "Ulm",
+                "Mehrere Anrufe; Flammen sichtbar", true,
+                "B3 - Dachstuhlbrand", true
+        ));
+    }
+
     // ==============================
     // Button Eingabe Löschen
     // ==============================
@@ -130,52 +150,41 @@ public class Leitstellensystem extends JFrame {
     // ==============================
     public void alarmieren(){
         try {
-            // Daten aus dem Formular abspeichern
+            // --- Daten aus dem Formular abspeichern ---
             String adresse = adresseTextField.getText();
             String hausNr = hNrTextField.getText();
-            String ort = ortTextField.getText();
-
-            // Pflichtfelder prüfen (leer?)
-            if (adresse.isEmpty() || hausNr.isEmpty() || ort.isEmpty() || plzTextField.getText().isEmpty()) {
-                throw new IllegalArgumentException("Fülle alle Felder aus");
-            }
-
-            // PLZ prüfen (nur Ziffern)
-            for (char c : plzTextField.getText().toCharArray()) {
-                if (!Character.isDigit(c)) {
-                    throw new IllegalArgumentException("PLZ muss eine Zahl sein");
-                }
-            }
-
-            // PLZ umwandeln
             int plz = Integer.parseInt(plzTextField.getText());
-
-            // Optionale fachliche Prüfung
-            if (plz <= 0) {
-                throw new IllegalArgumentException("PLZ ungültig");
-            }
-
-            // Weitere Felder
+            String ort = ortTextField.getText();
             String bemerkung = bemerkungTextField.getText();
             if (bemerkung.equals("- hier Bemerkung einfügen -")) {
                 bemerkung = "- keine Angabe";
             }
-
-            boolean miG = miGCheckBox.isSelected();
-            boolean signalfahrt = signalfahrtCheckBox.isSelected();
-
+            boolean miG;
+            if (miGCheckBox.isSelected()) {
+                miG = true;
+            } else miG = false;
             String stichwort = stichwortComboBox.getSelectedItem().toString();
+            boolean signalfahrt;
+            if (signalfahrtCheckBox.isSelected()) {
+                signalfahrt = true;
+            } else signalfahrt = false;
+
+            // --- Prüfen, ob die Eingaben den Vorgaben entsprechen ---
+            if (adresse.isEmpty() || hausNr.isEmpty() || plz <= 0 || ort.isEmpty()) {
+                throw new IllegalArgumentException("Fülle alle Felder aus");
+            }
+
             if (stichwort.equals("- Stichwort auswählen -")) {
                 throw new IllegalArgumentException("Wähle ein Stichwort aus");
             }
 
-            // Objekt erstellen -> siehe Klasse 'Einsatz'
+            // --- Objekt erstellen -> siehe Klasse 'Einsatz' ---
             Einsatz einsatz = new Einsatz(adresse, hausNr, plz, ort, bemerkung, miG, stichwort, signalfahrt);
 
-            // Objekt in Array Liste speichern
+            // --- Objekt in Array Liste speichern ---
             einsatzListe.add(einsatz);
 
-            // In die Tabelle einfügen
+            // --- In die Tabelle einfügen ---
             tableModel.addRow(new Object[]{
                     einsatz.getStichwort(),
                     einsatz.getAdresse() + " " + einsatz.getHausNr(),
@@ -185,7 +194,7 @@ public class Leitstellensystem extends JFrame {
                     einsatz.getSignalfahrt() ? "Ja" : "Nein"
             });
 
-            // Eingabefelder zurücksetzen
+            // --- Eingabefelder zurücksetzen ---
             eingabeLoeschen();
 
         } catch (Exception e) {
@@ -198,11 +207,11 @@ public class Leitstellensystem extends JFrame {
     // ==============================
     public void filtern(){
         try {
-            // Daten aus der Filter-Option abspeichern
+            // --- Daten aus der Filter-Option abspeichern ---
             String spalte = filternComboBox.getSelectedItem().toString();
             String suchbegriff = filterTextField.getText();
 
-            // Prüfen, ob die Eingaben den Vorgaben entsprechen
+            // --- Prüfen, ob die Eingaben den Vorgaben entsprechen ---
             if (spalte.equals("- Spalte auswählen")) {
                 throw new IllegalArgumentException("Bitte Spalte auswählen");
             }
@@ -210,7 +219,7 @@ public class Leitstellensystem extends JFrame {
                 throw new IllegalArgumentException("Bitte Suchbegriff eingeben");
             }
 
-            // Wechsel Button Text - Filter setzen / Filter löschen
+            // --- Wechsel Button Text - Filter setzen / Filter löschen ---
             if (filterButton.getText().equals("Filter setzen")) {
                 filterButton.setText("Filter löschen");
             } else if (filterButton.getText().equals("Filter löschen")) {
@@ -228,26 +237,6 @@ public class Leitstellensystem extends JFrame {
     // MAIN-Methode
     // ==============================
     public static void main(String[] args) {
-        ArrayList<Einsatz> startListe = new ArrayList<>();
-
-        startListe.add(new Einsatz(
-                "Münchner Straße", "12", 89073, "Ulm",
-                "Nachbar sieht Rauch", false,
-                "B2 – Rauchentwicklung", true
-        ));
-
-        startListe.add(new Einsatz(
-                "Karlstraße", "5", 89231, "Neu-Ulm",
-                "VU mit PKW", false,
-                "THL 2 – Verkehrsunfall", false
-        ));
-
-        startListe.add(new Einsatz(
-                "Söflinger Straße", "102", 89077, "Ulm",
-                "Mehrere Anrufe; Flammen sichtbar", true,
-                "B3 - Dachstuhlbrand", true
-        ));
-
-        new Leitstellensystem(startListe);
+        new Leitstellensystem();
     }
 }
