@@ -40,7 +40,7 @@ public class Leitstellensystem extends JFrame {
     private JLabel laufendeEinsaetzeLabel;
     private JTable einsatzTable;
     private DefaultTableModel tableModel;
-    private ArrayList<Einsatz> einsatzListe;
+    private ArrayList<Einsatz> einsatzListe = new ArrayList<>();;
 
         // Filter
     private JLabel fiterLabel;
@@ -56,8 +56,8 @@ public class Leitstellensystem extends JFrame {
     // ==============================
     // Konstruktor
     // ==============================
-    public Leitstellensystem(ArrayList<Einsatz> einsatzListe){
-        this.einsatzListe = einsatzListe;
+    public Leitstellensystem(){
+        initObjekte();
 
         // Spalten definieren
         String[] columnNames = {
@@ -108,6 +108,26 @@ public class Leitstellensystem extends JFrame {
         eingabeLoeschen.addActionListener(e -> { eingabeLoeschen();});
 
         filterButton.addActionListener(e -> { filtern();});
+    }
+
+    public void initObjekte(){
+        einsatzListe.add(new Einsatz(
+                "Münchner Straße", "12", 89073, "Ulm",
+                "Nachbar sieht Rauch", false,
+                "B2 – Rauchentwicklung", true
+        ));
+
+        einsatzListe.add(new Einsatz(
+                "Karlstraße", "5", 89231, "Neu-Ulm",
+                "VU mit PKW", false,
+                "THL 2 – Verkehrsunfall", false
+        ));
+
+        einsatzListe.add(new Einsatz(
+                "Söflinger Straße", "102", 89073, "Ulm",
+                "Mehrere Anrufe; Flammen sichtbar", true,
+                "B3 - Dachstuhlbrand", true
+        ));
     }
 
     // ==============================
@@ -217,26 +237,6 @@ public class Leitstellensystem extends JFrame {
     // MAIN-Methode
     // ==============================
     public static void main(String[] args) {
-        ArrayList<Einsatz> startListe = new ArrayList<>();
-
-        startListe.add(new Einsatz(
-                "Münchner Straße", "12", 89073, "Ulm",
-                "Nachbar sieht Rauch", false,
-                "B2 – Rauchentwicklung", true
-        ));
-
-        startListe.add(new Einsatz(
-                "Karlstraße", "5", 89231, "Neu-Ulm",
-                "VU mit PKW", false,
-                "THL 2 – Verkehrsunfall", false
-        ));
-
-        startListe.add(new Einsatz(
-                "Söflinger Straße", "102", 89073, "Ulm",
-                "Mehrere Anrufe; Flammen sichtbar", true,
-                "B3 - Dachstuhlbrand", true
-        ));
-
-        new Leitstellensystem(startListe);
+        new Leitstellensystem();
     }
 }
