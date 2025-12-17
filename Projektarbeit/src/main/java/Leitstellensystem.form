@@ -288,14 +288,12 @@
           <text value="Filter setzen"/>
         </properties>
       </component>
-      <component id="e27c8" class="javax.swing.JButton" binding="EinsätzeBeendenButton">
+      <component id="e27c8" class="javax.swing.JButton" binding="ausgewählteEinsätzeBeendenButton" default-binding="true">
         <constraints>
-          <grid row="7" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="110" height="-1"/>
-          </grid>
+          <grid row="7" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Alle Einsätze beenden"/>
+          <text value="Ausgewählte Einsätze beenden"/>
         </properties>
       </component>
     </children>
