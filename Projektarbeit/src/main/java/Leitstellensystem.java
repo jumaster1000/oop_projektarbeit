@@ -186,14 +186,10 @@ public class Leitstellensystem extends JFrame {
 
             // --- Pflichtfelder prüfen (leer?) ---
             if (adresse.isEmpty() || hausNr.isEmpty() || ort.isEmpty() || plzTextField.getText().isEmpty()) {
-                throw new IllegalArgumentException("Fülle alle Felder aus");
+                throw new IllegalArgumentException("Bitte alle Felder ausfüllen");
             }
 
             // PLZ Prüfung
-            if (plzTextField.getText().isEmpty()) {
-                throw new IllegalArgumentException("Fülle alle Felder aus");
-            }
-
             for (char c : plzTextField.getText().toCharArray()) {
                 if (!Character.isDigit(c)) {
                     throw new IllegalArgumentException("PLZ muss eine Zahl sein");
@@ -237,6 +233,11 @@ public class Leitstellensystem extends JFrame {
                     einsatz.getMiG() ? "Ja" : "Nein",
                     einsatz.getSignalfahrt() ? "Ja" : "Nein"
             });
+
+            JOptionPane.showMessageDialog(this,
+                    "Einsatzkräfte wurden alarmiert",
+                    "Alarmierung erfolgreich",
+                    JOptionPane.INFORMATION_MESSAGE);
 
             // --- Eingabefelder zurücksetzen ---
             eingabeLoeschen();
