@@ -286,6 +286,7 @@
         <constraints>
           <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="30" height="-1"/>
+            <maximum-size width="30" height="-1"/>
           </grid>
         </constraints>
       </hspacer>
