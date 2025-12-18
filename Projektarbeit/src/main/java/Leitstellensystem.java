@@ -1,5 +1,7 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.table.TableRowSorter;
 import javax.swing.RowFilter;
@@ -111,12 +113,30 @@ public class Leitstellensystem extends JFrame {
         // ==============================
         // Action Listener
         // ==============================
-        alarmierenButton.addActionListener(e -> alarmieren());
-
-        eingabeLoeschen.addActionListener(e -> { eingabeLoeschen();});
-
-        filterButton.addActionListener(e -> { filtern();});
-        einsaetzeBeendenButton.addActionListener(e -> { einsaetzeBeenden();});
+        alarmierenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                alarmieren();
+            }
+        });
+        eingabeLoeschen.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                eingabeLoeschen();
+            }
+        });
+        filterButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                filtern();
+            }
+        });
+        einsaetzeBeendenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                einsaetzeBeenden();
+            }
+        });
     }
 
     public void initObjekte(){
