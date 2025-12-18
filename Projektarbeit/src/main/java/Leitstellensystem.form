@@ -124,7 +124,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="Menschenleben in Gefahr?"/>
+          <text value="Menschenleben in Gefahr? (MiG)"/>
         </properties>
       </component>
       <component id="86f16" class="javax.swing.JLabel" binding="hNrLabel">
@@ -232,11 +232,6 @@
           <text value="Rauch aus Fenster sichtbar; POL vor Ort"/>
         </properties>
       </component>
-      <hspacer id="f8ffa">
-        <constraints>
-          <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </hspacer>
       <component id="2a936" class="javax.swing.JLabel" binding="leitstelleIcon">
         <constraints>
           <grid row="0" column="8" row-span="4" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="1" use-parent-layout="false"/>
@@ -246,14 +241,6 @@
           <text value=""/>
         </properties>
       </component>
-      <hspacer id="4d691">
-        <constraints>
-          <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="0" indent="2" use-parent-layout="false">
-            <preferred-size width="20" height="11"/>
-            <maximum-size width="20" height="-1"/>
-          </grid>
-        </constraints>
-      </hspacer>
       <component id="93162" class="javax.swing.JLabel" binding="fiterLabel">
         <constraints>
           <grid row="2" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -279,6 +266,14 @@
           </model>
         </properties>
       </component>
+      <component id="8b965" class="javax.swing.JLabel" binding="suchbegriffEingebenLabel">
+        <constraints>
+          <grid row="4" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Suchbegriff eingeben:"/>
+        </properties>
+      </component>
       <component id="ddba8" class="javax.swing.JTextField" binding="filterTextField">
         <constraints>
           <grid row="5" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
@@ -287,28 +282,27 @@
         </constraints>
         <properties/>
       </component>
+      <hspacer id="f8ffa">
+        <constraints>
+          <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="30" height="-1"/>
+          </grid>
+        </constraints>
+      </hspacer>
+      <component id="e27c8" class="javax.swing.JButton" binding="einsaetzeBeendenButton">
+        <constraints>
+          <grid row="7" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Alle Einsätze beenden"/>
+        </properties>
+      </component>
       <component id="df5b1" class="javax.swing.JButton" binding="filterButton">
         <constraints>
           <grid row="6" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Filter setzen"/>
-        </properties>
-      </component>
-      <component id="e27c8" class="javax.swing.JButton" binding="einsaetzeBeendenButton">
-        <constraints>
-          <grid row="7" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Alle Einsätze beenden"/>
-        </properties>
-      </component>
-      <component id="8b965" class="javax.swing.JLabel" binding="suchbegriffEingebenLabel">
-        <constraints>
-          <grid row="4" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Suchbegriff eingeben:"/>
         </properties>
       </component>
     </children>
