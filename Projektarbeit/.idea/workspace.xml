@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bedaf44b-17e4-4c4f-8669-723165d6dba5" name="Changes" comment="GUI Filter angepasst" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="main" />
+  </component>
+  <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="main" />
+              </list>
+            </value>
+          </entry>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/main" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="feature/cosmo" />
+              </list>
+            </value>
+          </entry>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/feature/julian" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+    <option name="SHOW_RECENT_BRANCHES" value="false" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;assignee&quot;: &quot;jumaster1000&quot;
+    }
+  ],
+  &quot;lastFilter&quot;: {
+    &quot;assignee&quot;: &quot;jumaster1000&quot;
+  }
+}</component>
+  <component name="GitHubPullRequestState">{
+  &quot;prStates&quot;: [
+    {
+      &quot;id&quot;: {
+        &quot;id&quot;: &quot;PR_kwDOQiiQTs64_In_&quot;,
+        &quot;number&quot;: 1
+      },
+      &quot;lastSeen&quot;: 1765964749668
+    },
+    {
+      &quot;id&quot;: {
+        &quot;id&quot;: &quot;PR_kwDOQiiQTs65YYNV&quot;,
+        &quot;number&quot;: 4
+      },
+      &quot;lastSeen&quot;: 1765984238740
+    },
+    {
+      &quot;id&quot;: {
+        &quot;id&quot;: &quot;PR_kwDOQiiQTs65YWvt&quot;,
+        &quot;number&quot;: 3
+      },
+      &quot;lastSeen&quot;: 1765984239779
+    }
+  ]
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/jumaster1000/oop_projektarbeit.git&quot;,
+    &quot;accountId&quot;: &quot;9d4a868a-9abf-4b85-a51b-6de6bb93bad7&quot;
+  },
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
+    },
+    &quot;owner&quot;: &quot;jumaster1000&quot;,
+    &quot;repository&quot;: &quot;oop_projektarbeit&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="36O3R6qzOxp3EtEpcDhhThvgiDV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Leitstellensystem.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "false",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.STATE": "right",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "192",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.STATE": "left",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "335",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "feature",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "to.speed.mode.migration.done": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Projektarbeit/src/main/resources" />
+    </key>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bedaf44b-17e4-4c4f-8669-723165d6dba5" name="Changes" comment="" />
+      <created>1764863779399</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1764863779399</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Erste Installierung">
+      <option name="closed" value="true" />
+      <created>1764863807796</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1764863807796</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Erste Installierung">
+      <option name="closed" value="true" />
+      <created>1764864565001</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1764864565001</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Erste erstellung GUI Fenster">
+      <option name="closed" value="true" />
+      <created>1764881100118</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1764881100118</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Erste erstellung GUI Fenster">
+      <option name="closed" value="true" />
+      <created>1764881113484</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1764881113484</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Erste erstellung GUI Fenster">
+      <option name="closed" value="true" />
+      <created>1765311888207</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1765311888207</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Update GUI Fenster">
+      <option name="closed" value="true" />
+      <created>1765822891811</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1765822891811</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Kommentare hinzugefügt">
+      <option name="closed" value="true" />
+      <created>1765839918881</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1765839918881</updated>
+    </task>
+    <task id="LOCAL-00008" summary="PLZ im Formular Exceptions angepasst">
+      <option name="closed" value="true" />
+      <created>1765964334479</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1765964334479</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Init Methode eingefügt">
+      <option name="closed" value="true" />
+      <created>1765966212749</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1765966212749</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Init Methode eingefügt">
+      <option name="closed" value="true" />
+      <created>1765966505073</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1765966505073</updated>
+    </task>
+    <task id="LOCAL-00011" summary="PLZ Prüfung">
+      <option name="closed" value="true" />
+      <created>1765970432860</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1765970432860</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Code Wiederherstellung">
+      <option name="closed" value="true" />
+      <created>1765988645545</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1765988645545</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Code Wiederherstellung">
+      <option name="closed" value="true" />
+      <created>1765989067274</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1765989067275</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Code Wiederherstellung">
+      <option name="closed" value="true" />
+      <created>1765989209485</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1765989209485</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Code Wiederherstellung">
+      <option name="closed" value="true" />
+      <created>1765989253187</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1765989253187</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Action Listener">
+      <option name="closed" value="true" />
+      <created>1766063289581</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1766063289581</updated>
+    </task>
+    <task id="LOCAL-00017" summary="GUI Filter angepasst">
+      <option name="closed" value="true" />
+      <created>1766070434215</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1766070434215</updated>
+    </task>
+    <task id="LOCAL-00018" summary="GUI Filter angepasst">
+      <option name="closed" value="true" />
+      <created>1766070611068</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1766070611068</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="0a64418b-cf17-4dd2-be44-0fbdb44e1ab4" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="0a64418b-cf17-4dd2-be44-0fbdb44e1ab4">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="range">
+                    <value>
+                      <list>
+                        <option value="origin/main..origin/revert-3-feature/julian" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Erste Installierung" />
+    <MESSAGE value="Erste erstellung GUI Fenster" />
+    <MESSAGE value="Update GUI Fenster" />
+    <MESSAGE value="Kommentare hinzugefügt" />
+    <MESSAGE value="PLZ im Formular Exceptions angepasst" />
+    <MESSAGE value="Init Methode eingefügt" />
+    <MESSAGE value="PLZ Prüfung" />
+    <MESSAGE value="Code Wiederherstellung" />
+    <MESSAGE value="Action Listener" />
+    <MESSAGE value="GUI Filter angepasst" />
+    <option name="LAST_COMMIT_MESSAGE" value="GUI Filter angepasst" />
+  </component>
+</project>
