@@ -1,0 +1,123 @@
+Index: Projektarbeit/src/main/java/Leitstellensystem.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import javax.swing.*;\nimport javax.swing.table.DefaultTableModel;\nimport java.util.ArrayList;\n\n\npublic class Leitstellensystem extends JFrame {\n    // ==============================\n    // Attribute Initialisieren\n    // ==============================\n    // Haupt Panel\n    private JPanel hauptPanel;\n\n    // Einsatz anlegen\n        // Adresse\n    private JLabel einsatzAnlegenLabel;\n    private JLabel adresseLabel;\n    private JTextField adresseTextField;\n    private JLabel hNrLabel;\n    private JTextField hNrTextField;\n    private JLabel postleitzahlLabel;\n    private JTextField plzTextField;\n    private JLabel ortLabel;\n    private JTextField ortTextField;\n\n        // Zusatzinformationen\n    private JLabel bemerkungLabel;\n    private JTextField bemerkungTextField;\n    private JLabel MiGLabel;\n    private JCheckBox miGCheckBox;\n    private JLabel stichwortLabel;\n    private JComboBox stichwortComboBox;\n    private JLabel signalfahrtLabel;\n    private JCheckBox signalfahrtCheckBox;\n\n        // Buttons\n    private JButton alarmierenButton;\n    private JButton eingabeLoeschen;\n\n        // Einsatzverwaltung\n    private JLabel laufendeEinsaetzeLabel;\n    private JTable einsatzTable;\n    private DefaultTableModel tableModel;\n    private ArrayList<Einsatz> einsatzListe;\n\n        // Filter\n    private JLabel fiterLabel;\n    private JTextField filterTextField;\n    private JButton filterButton;\n    private JComboBox filternComboBox;\n    private JButton ausgewählteEinsätzeBeendenButton;\n\n\n    // Logo\n    private JLabel leitstelleIcon;\n\n    // ==============================\n    // Konstruktor\n    // ==============================\n    public Leitstellensystem(ArrayList<Einsatz> einsatzListe){\n        this.einsatzListe = einsatzListe;\n\n        // Spalten definieren\n        String[] columnNames = {\n                \"Stichwort\", \"Adresse\", \"Bemerkung\", \"Ort\", \"MiG\", \"Signalfahrt\"\n        };\n\n        // TableModel bauen\n        tableModel = new DefaultTableModel(columnNames, 0);\n\n        // Das Model an deine JTable aus dem Designer geben\n        einsatzTable.setModel(tableModel);\n        einsatzTable.setDefaultEditor(Object.class, null);\n\n        // Spaltenbreiten anpassen\n        einsatzTable.getColumnModel().getColumn(0).setPreferredWidth(150);  // Stichwort\n        einsatzTable.getColumnModel().getColumn(1).setPreferredWidth(200);  // Adresse\n        einsatzTable.getColumnModel().getColumn(2).setPreferredWidth(200);  // Bemerkung\n        einsatzTable.getColumnModel().getColumn(3).setPreferredWidth(80);  // Ort\n        einsatzTable.getColumnModel().getColumn(4).setPreferredWidth(15);   // MiG\n        einsatzTable.getColumnModel().getColumn(5).setPreferredWidth(30);   // Signalfahrt\n\n        // Demo-Einsätze\n        for (Einsatz e : einsatzListe) {\n            tableModel.addRow(new Object[]{\n                    e.getStichwort(),\n                    e.getAdresse() + \" \" + e.getHausNr(),\n                    e.getBemerkung(),\n                    e.getOrt() + \" (\" + e.getPlz() + \")\",\n                    e.getMiG() ? \"Ja\" : \"Nein\",\n                    e.getSignalfahrt() ? \"Ja\" : \"Nein\"\n            });\n        }\n\n        // Rest des Konstruktors\n        setTitle(\"Leitstellensystem - Leitstelle Ulm / Neu-Ulm\");\n        setDefaultCloseOperation(EXIT_ON_CLOSE);\n        setContentPane(hauptPanel);\n        setSize(1000,500);\n        setLocationRelativeTo(null);\n        setVisible(true);\n        setResizable(true);\n\n        // ==============================\n        // Action Listener\n        // ==============================\n        alarmierenButton.addActionListener(e -> alarmieren());\n\n        eingabeLoeschen.addActionListener(e -> { eingabeLoeschen();});\n\n        filterButton.addActionListener(e -> { filtern();});\n    }\n\n    // ==============================\n    // Button Eingabe Löschen\n    // ==============================\n    public void eingabeLoeschen(){\n        adresseTextField.setText(\"\");\n        hNrTextField.setText(\"\");\n        plzTextField.setText(\"\");\n        ortTextField.setText(\"\");\n        bemerkungTextField.setText(\"\");\n        miGCheckBox.setSelected(false);\n        stichwortComboBox.setSelectedItem(\"- Stichwort auswählen -\");\n        signalfahrtCheckBox.setSelected(false);\n    }\n\n\n    // ==============================\n    // Button Alarmieren\n    // ==============================\n    public void alarmieren(){\n        try {\n            // Daten aus dem Formular abspeichern\n            String adresse = adresseTextField.getText();\n            String hausNr = hNrTextField.getText();\n            String ort = ortTextField.getText();\n\n            // Pflichtfelder prüfen (leer?)\n            if (adresse.isEmpty() || hausNr.isEmpty() || ort.isEmpty() || plzTextField.getText().isEmpty()) {\n                throw new IllegalArgumentException(\"Fülle alle Felder aus\");\n            }\n\n            // PLZ prüfen (nur Ziffern)\n            for (char c : plzTextField.getText().toCharArray()) {\n                if (!Character.isDigit(c)) {\n                    throw new IllegalArgumentException(\"PLZ muss eine Zahl sein\");\n                }\n            }\n\n            // PLZ umwandeln\n            int plz = Integer.parseInt(plzTextField.getText());\n\n            // Optionale fachliche Prüfung\n            if (plz <= 0) {\n                throw new IllegalArgumentException(\"PLZ ungültig\");\n            }\n\n            // Weitere Felder\n            String bemerkung = bemerkungTextField.getText();\n            if (bemerkung.equals(\"- hier Bemerkung einfügen -\")) {\n                bemerkung = \"- keine Angabe\";\n            }\n\n            boolean miG = miGCheckBox.isSelected();\n            boolean signalfahrt = signalfahrtCheckBox.isSelected();\n\n            String stichwort = stichwortComboBox.getSelectedItem().toString();\n            if (stichwort.equals(\"- Stichwort auswählen -\")) {\n                throw new IllegalArgumentException(\"Wähle ein Stichwort aus\");\n            }\n\n            // Objekt erstellen -> siehe Klasse 'Einsatz'\n            Einsatz einsatz = new Einsatz(adresse, hausNr, plz, ort, bemerkung, miG, stichwort, signalfahrt);\n\n            // Objekt in Array Liste speichern\n            einsatzListe.add(einsatz);\n\n            // In die Tabelle einfügen\n            tableModel.addRow(new Object[]{\n                    einsatz.getStichwort(),\n                    einsatz.getAdresse() + \" \" + einsatz.getHausNr(),\n                    einsatz.getBemerkung(),\n                    einsatz.getOrt() + \" (\" + einsatz.getPlz() + \")\",\n                    einsatz.getMiG() ? \"Ja\" : \"Nein\",\n                    einsatz.getSignalfahrt() ? \"Ja\" : \"Nein\"\n            });\n\n            // Eingabefelder zurücksetzen\n            eingabeLoeschen();\n\n        } catch (Exception e) {\n            JOptionPane.showMessageDialog(this, e.getMessage(), \"Fehler\", JOptionPane.ERROR_MESSAGE);\n        }\n    }\n\n    // ==============================\n    // Einsätze filtern\n    // ==============================\n    public void filtern(){\n        try {\n            // Daten aus der Filter-Option abspeichern\n            String spalte = filternComboBox.getSelectedItem().toString();\n            String suchbegriff = filterTextField.getText();\n\n            // Prüfen, ob die Eingaben den Vorgaben entsprechen\n            if (spalte.equals(\"- Spalte auswählen\")) {\n                throw new IllegalArgumentException(\"Bitte Spalte auswählen\");\n            }\n            if (suchbegriff.equals(\"\")) {\n                throw new IllegalArgumentException(\"Bitte Suchbegriff eingeben\");\n            }\n\n            // Wechsel Button Text - Filter setzen / Filter löschen\n            if (filterButton.getText().equals(\"Filter setzen\")) {\n                filterButton.setText(\"Filter löschen\");\n            } else if (filterButton.getText().equals(\"Filter löschen\")) {\n                filternComboBox.setSelectedItem(\"- Spalte auswählen\");\n                filterTextField.setText(\"\");\n                filterButton.setText(\"Filter setzen\");\n            }\n\n        } catch(Exception e){\n            JOptionPane.showMessageDialog(this, e.getMessage(), \"Fehler\", JOptionPane.ERROR_MESSAGE);\n        }\n    }\n\n    // ==============================\n    // MAIN-Methode\n    // ==============================\n    public static void main(String[] args) {\n        ArrayList<Einsatz> startListe = new ArrayList<>();\n\n        startListe.add(new Einsatz(\n                \"Münchner Straße\", \"12\", 89073, \"Ulm\",\n                \"Nachbar sieht Rauch\", false,\n                \"B2 – Rauchentwicklung\", true\n        ));\n\n        startListe.add(new Einsatz(\n                \"Karlstraße\", \"5\", 89231, \"Neu-Ulm\",\n                \"VU mit PKW\", false,\n                \"THL 2 – Verkehrsunfall\", false\n        ));\n\n        startListe.add(new Einsatz(\n                \"Söflinger Straße\", \"102\", 89077, \"Ulm\",\n                \"Mehrere Anrufe; Flammen sichtbar\", true,\n                \"B3 - Dachstuhlbrand\", true\n        ));\n\n        new Leitstellensystem(startListe);\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projektarbeit/src/main/java/Leitstellensystem.java b/Projektarbeit/src/main/java/Leitstellensystem.java
+--- a/Projektarbeit/src/main/java/Leitstellensystem.java	(revision 7a87b8dc456c3ab51a9ab624f52da5fb9f622e46)
++++ b/Projektarbeit/src/main/java/Leitstellensystem.java	(date 1765965816985)
+@@ -130,52 +130,41 @@
+     // ==============================
+     public void alarmieren(){
+         try {
+-            // Daten aus dem Formular abspeichern
++            // --- Daten aus dem Formular abspeichern ---
+             String adresse = adresseTextField.getText();
+             String hausNr = hNrTextField.getText();
+-            String ort = ortTextField.getText();
+-
+-            // Pflichtfelder prüfen (leer?)
+-            if (adresse.isEmpty() || hausNr.isEmpty() || ort.isEmpty() || plzTextField.getText().isEmpty()) {
+-                throw new IllegalArgumentException("Fülle alle Felder aus");
+-            }
+-
+-            // PLZ prüfen (nur Ziffern)
+-            for (char c : plzTextField.getText().toCharArray()) {
+-                if (!Character.isDigit(c)) {
+-                    throw new IllegalArgumentException("PLZ muss eine Zahl sein");
+-                }
+-            }
+-
+-            // PLZ umwandeln
+             int plz = Integer.parseInt(plzTextField.getText());
+-
+-            // Optionale fachliche Prüfung
+-            if (plz <= 0) {
+-                throw new IllegalArgumentException("PLZ ungültig");
+-            }
+-
+-            // Weitere Felder
++            String ort = ortTextField.getText();
+             String bemerkung = bemerkungTextField.getText();
+             if (bemerkung.equals("- hier Bemerkung einfügen -")) {
+                 bemerkung = "- keine Angabe";
+             }
+-
+-            boolean miG = miGCheckBox.isSelected();
+-            boolean signalfahrt = signalfahrtCheckBox.isSelected();
+-
++            boolean miG;
++            if (miGCheckBox.isSelected()) {
++                miG = true;
++            } else miG = false;
+             String stichwort = stichwortComboBox.getSelectedItem().toString();
++            boolean signalfahrt;
++            if (signalfahrtCheckBox.isSelected()) {
++                signalfahrt = true;
++            } else signalfahrt = false;
++
++            // --- Prüfen, ob die Eingaben den Vorgaben entsprechen ---
++            if (adresse.isEmpty() || hausNr.isEmpty() || plz <= 0 || ort.isEmpty()) {
++                throw new IllegalArgumentException("Fülle alle Felder aus");
++            }
++
+             if (stichwort.equals("- Stichwort auswählen -")) {
+                 throw new IllegalArgumentException("Wähle ein Stichwort aus");
+             }
+ 
+-            // Objekt erstellen -> siehe Klasse 'Einsatz'
++            // --- Objekt erstellen -> siehe Klasse 'Einsatz' ---
+             Einsatz einsatz = new Einsatz(adresse, hausNr, plz, ort, bemerkung, miG, stichwort, signalfahrt);
+ 
+-            // Objekt in Array Liste speichern
++            // --- Objekt in Array Liste speichern ---
+             einsatzListe.add(einsatz);
+ 
+-            // In die Tabelle einfügen
++            // --- In die Tabelle einfügen ---
+             tableModel.addRow(new Object[]{
+                     einsatz.getStichwort(),
+                     einsatz.getAdresse() + " " + einsatz.getHausNr(),
+@@ -185,7 +174,7 @@
+                     einsatz.getSignalfahrt() ? "Ja" : "Nein"
+             });
+ 
+-            // Eingabefelder zurücksetzen
++            // --- Eingabefelder zurücksetzen ---
+             eingabeLoeschen();
+ 
+         } catch (Exception e) {
+@@ -198,11 +187,11 @@
+     // ==============================
+     public void filtern(){
+         try {
+-            // Daten aus der Filter-Option abspeichern
++            // --- Daten aus der Filter-Option abspeichern ---
+             String spalte = filternComboBox.getSelectedItem().toString();
+             String suchbegriff = filterTextField.getText();
+ 
+-            // Prüfen, ob die Eingaben den Vorgaben entsprechen
++            // --- Prüfen, ob die Eingaben den Vorgaben entsprechen ---
+             if (spalte.equals("- Spalte auswählen")) {
+                 throw new IllegalArgumentException("Bitte Spalte auswählen");
+             }
+@@ -210,7 +199,7 @@
+                 throw new IllegalArgumentException("Bitte Suchbegriff eingeben");
+             }
+ 
+-            // Wechsel Button Text - Filter setzen / Filter löschen
++            // --- Wechsel Button Text - Filter setzen / Filter löschen ---
+             if (filterButton.getText().equals("Filter setzen")) {
+                 filterButton.setText("Filter löschen");
+             } else if (filterButton.getText().equals("Filter löschen")) {
+@@ -243,7 +232,7 @@
+         ));
+ 
+         startListe.add(new Einsatz(
+-                "Söflinger Straße", "102", 89077, "Ulm",
++                "Söflinger Straße", "102", 89073, "Ulm",
+                 "Mehrere Anrufe; Flammen sichtbar", true,
+                 "B3 - Dachstuhlbrand", true
+         ));
