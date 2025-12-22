@@ -1,8 +1,7 @@
 # Leitstellensystem - Projektarbeit OOP
 ### Projektarbeit Objektorientiertes Programmieren | 1. Semester - Digital Enterprise Management | Cosmo Stahn, Julian Schnabl
 
-### Kurzbeschreibung:
->** **
+>**Kurzbeschreibung:**
 >Bei dem Programm handelt es sich um ein Leitstellensystem (LSS) welches generell in Integrierten Leitstellen (ILS) der Feuerwehren und des Rettungsdienstes eingesetzt wird. Für diese Projektarbeit wurde das System im Vergleich zu einem reellen LSS vereinfacht.
 
 ### Hintergrund:
