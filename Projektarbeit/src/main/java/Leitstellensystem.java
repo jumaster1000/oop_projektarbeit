@@ -41,6 +41,7 @@ public class Leitstellensystem extends JFrame {
     private JButton filterButton;
     private JComboBox filternComboBox;
     private JButton einsaetzeBeendenButton;
+    private JButton alphabetischSortierenButton;
     private TableRowSorter<DefaultTableModel> sorter;
 
     // ------------------------------
@@ -88,7 +89,7 @@ public class Leitstellensystem extends JFrame {
         setTitle("Leitstellensystem - Leitstelle Ulm / Neu-Ulm");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setContentPane(hauptPanel);
-        setSize(1000,500);
+        setSize(1050,500);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(true);
@@ -118,6 +119,12 @@ public class Leitstellensystem extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 einsaetzeBeenden();
+            }
+        });
+        alphabetischSortierenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                alphabetischSortieren();
             }
         });
     } // Ende Konstruktor
@@ -366,7 +373,12 @@ public class Leitstellensystem extends JFrame {
                     JOptionPane.ERROR_MESSAGE);
         }
     }
+    // ------------------------------
+    // Sortieren
+    // ------------------------------
+    public void alphabetischSortieren(){
 
+    }
     // ------------------------------
     // MAIN-Methode
     // ------------------------------
