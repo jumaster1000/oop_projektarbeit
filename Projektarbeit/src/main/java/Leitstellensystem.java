@@ -133,7 +133,7 @@ public class Leitstellensystem extends JFrame {
                 einsaetzeBeenden();
             }
         });
-    }
+    } // Ende Konstruktor
 
     // ==============================
     // Demo-Einsätze
@@ -367,9 +367,9 @@ public class Leitstellensystem extends JFrame {
         }
     }
 
-    // ==============================
+    // ------------------------------
     // MAIN-Methode
-    // ==============================
+    // ------------------------------
     public static void main(String[] args) {
         new Leitstellensystem();
     }
