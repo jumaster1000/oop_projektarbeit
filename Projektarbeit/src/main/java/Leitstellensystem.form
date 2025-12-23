@@ -99,7 +99,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="Gerhart-Hauptmann-Weg"/>
+          <text value=""/>
         </properties>
       </component>
       <scrollpane id="61192">
@@ -144,7 +144,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="29"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="e1201" class="javax.swing.JLabel">
@@ -166,7 +166,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="89075"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="84a35" class="javax.swing.JLabel">
@@ -186,7 +186,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="Ulm"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="8a8fa" class="javax.swing.JButton" binding="alarmierenButton">
@@ -229,7 +229,7 @@
           <grid row="3" column="1" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="9" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Rauch aus Fenster sichtbar; POL vor Ort"/>
+          <text value="- hier Bemerkung einfügen -"/>
         </properties>
       </component>
       <component id="2a936" class="javax.swing.JLabel">
