@@ -16,24 +16,15 @@ public class Leitstellensystem extends JFrame {
 
     // Einsatz anlegen
     // Adresse
-    private JLabel einsatzAnlegenLabel;
-    private JLabel adresseLabel;
     private JTextField adresseTextField;
-    private JLabel hNrLabel;
     private JTextField hNrTextField;
-    private JLabel postleitzahlLabel;
     private JTextField plzTextField;
-    private JLabel ortLabel;
     private JTextField ortTextField;
 
     // Zusatzinformationen
-    private JLabel bemerkungLabel;
     private JTextField bemerkungTextField;
-    private JLabel MiGLabel;
     private JCheckBox miGCheckBox;
-    private JLabel stichwortLabel;
     private JComboBox stichwortComboBox;
-    private JLabel signalfahrtLabel;
     private JCheckBox signalfahrtCheckBox;
 
     // Buttons
@@ -41,47 +32,39 @@ public class Leitstellensystem extends JFrame {
     private JButton eingabeLoeschen;
 
     // Einsatzverwaltung
-    private JLabel laufendeEinsaetzeLabel;
     private JTable einsatzTable;
     private DefaultTableModel tableModel;
     private ArrayList<Einsatz> einsatzListe = new ArrayList<>();;
 
-
     // Filter
-    private JLabel fiterLabel;
     private JTextField filterTextField;
     private JButton filterButton;
     private JComboBox filternComboBox;
     private JButton einsaetzeBeendenButton;
     private TableRowSorter<DefaultTableModel> sorter;
 
-
-
-    // Logo
-    private JLabel leitstelleIcon;
-    private JLabel suchbegriffEingebenLabel;
-
     // ==============================
     // Konstruktor
     // ==============================
     public Leitstellensystem(){
+        // Demo-Einsätze erstellen
         initObjekte();
 
-        // Spalten definieren
+        // Spalten der Tabelle definieren
         String[] columnNames = {
                 "Stichwort", "Adresse", "Bemerkung", "Ort", "MiG", "Signalfahrt"
         };
 
-        // TableModel bauen
+        // TableModel aufbauen
         tableModel = new DefaultTableModel(columnNames, 0);
 
-        // Das Model an deine JTable aus dem Designer geben
+        // Das Model an deine JTable aus dem Designer geben & Zeilensortierer initialisieren
         einsatzTable.setModel(tableModel);
         sorter = new TableRowSorter<>(tableModel);
         einsatzTable.setRowSorter(sorter);
         einsatzTable.setDefaultEditor(Object.class, null);
 
-        // Spaltenbreiten anpassen
+        // Spaltenbreiten der Tabelle anpassen
         einsatzTable.getColumnModel().getColumn(0).setPreferredWidth(150);  // Stichwort
         einsatzTable.getColumnModel().getColumn(1).setPreferredWidth(200);  // Adresse
         einsatzTable.getColumnModel().getColumn(2).setPreferredWidth(200);  // Bemerkung
@@ -89,7 +72,7 @@ public class Leitstellensystem extends JFrame {
         einsatzTable.getColumnModel().getColumn(4).setPreferredWidth(15);   // MiG
         einsatzTable.getColumnModel().getColumn(5).setPreferredWidth(30);   // Signalfahrt
 
-        // Demo-Einsätze
+        // Demo-Einsätze ausgeben
         for (Einsatz e : einsatzListe) {
             tableModel.addRow(new Object[]{
                     e.getStichwort(),
@@ -101,7 +84,7 @@ public class Leitstellensystem extends JFrame {
             });
         }
 
-        // Rest des Konstruktors
+        // Rest des Konstruktors / Definition GUI-Fenster
         setTitle("Leitstellensystem - Leitstelle Ulm / Neu-Ulm");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setContentPane(hauptPanel);
@@ -139,6 +122,9 @@ public class Leitstellensystem extends JFrame {
         });
     }
 
+    // ==============================
+    // Demo-Einsätze
+    // ==============================
     public void initObjekte(){
         einsatzListe.add(new Einsatz(
                 "Münchner Straße", "12", 89073, "Ulm",
@@ -160,7 +146,7 @@ public class Leitstellensystem extends JFrame {
     }
 
     // ==============================
-    // Button Eingabe Löschen
+    // Button: Eingabe Löschen
     // ==============================
     public void eingabeLoeschen(){
         adresseTextField.setText("");
@@ -175,16 +161,16 @@ public class Leitstellensystem extends JFrame {
 
 
     // ==============================
-    // Button Alarmieren
+    // Button: Alarmieren
     // ==============================
     public void alarmieren(){
         try {
-            // --- Daten aus dem Formular abspeichern ---
+            // Daten aus dem Formular abspeichern
             String adresse = adresseTextField.getText();
             String hausNr = hNrTextField.getText();
             String ort = ortTextField.getText();
 
-            // --- Pflichtfelder prüfen (leer?) ---
+            // Pflichtfelder prüfen (leer?)
             if (adresse.isEmpty() || hausNr.isEmpty() || ort.isEmpty() || plzTextField.getText().isEmpty()) {
                 throw new IllegalArgumentException("Bitte alle Felder ausfüllen");
             }
@@ -203,7 +189,7 @@ public class Leitstellensystem extends JFrame {
 
             int plz = Integer.parseInt(plzTextField.getText());
 
-            // --- Weitere Felder ---
+            // Weitere Felder
             String bemerkung = bemerkungTextField.getText();
             if (bemerkung.equals("- hier Bemerkung einfügen -")) {
                 bemerkung = "- keine Angabe";
@@ -218,13 +204,13 @@ public class Leitstellensystem extends JFrame {
             }
 
 
-            // --- Objekt erstellen -> siehe Klasse 'Einsatz' ---
+            // Objekt erstellen -> siehe Klasse 'Einsatz'
             Einsatz einsatz = new Einsatz(adresse, hausNr, plz, ort, bemerkung, miG, stichwort, signalfahrt);
 
-            // --- Objekt in Array Liste speichern ---
+            // Objekt in Array Liste speichern
             einsatzListe.add(einsatz);
 
-            // --- In die Tabelle einfügen ---
+            // In Tabelle einfügen
             tableModel.addRow(new Object[]{
                     einsatz.getStichwort(),
                     einsatz.getAdresse() + " " + einsatz.getHausNr(),
@@ -239,7 +225,7 @@ public class Leitstellensystem extends JFrame {
                     "Alarmierung erfolgreich",
                     JOptionPane.INFORMATION_MESSAGE);
 
-            // --- Eingabefelder zurücksetzen ---
+            // Eingabefelder zurücksetzen
             eingabeLoeschen();
 
         } catch (Exception e) {
@@ -261,13 +247,11 @@ public class Leitstellensystem extends JFrame {
                 filterTextField.setText("");
                 filterButton.setText("Filter setzen");
                 einsaetzeBeendenButton.setText("Alle Einsätze beenden");
-
-                return;
             }
 
             // ===== FALL 2: Filter setzen =====
             String spalte = filternComboBox.getSelectedItem().toString();
-            String suchbegriff = filterTextField.getText().trim();
+            String suchbegriff = filterTextField.getText();
 
             // --- Eingaben prüfen ---
             if (spalte.equals("- Spalte auswählen")) {
@@ -290,10 +274,14 @@ public class Leitstellensystem extends JFrame {
                 default -> throw new IllegalArgumentException("Ungültige Spalte");
             }
 
-            // --- Filter anwenden (case-insensitive) ---
-            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + suchbegriff, columnIndex));
+            // Filter anwenden (case-insensitive)
+            if(columnIndex == 3) {
+                sorter.setRowFilter(RowFilter.regexFilter("(?i)" + suchbegriff, columnIndex));
+            } else {
+                sorter.setRowFilter(RowFilter.regexFilter("(?i)" + suchbegriff, columnIndex));
+            }
 
-            // --- Button-Zustände aktualisieren ---
+            // Button-Zustände aktualisieren
             filterButton.setText("Filter löschen");
             einsaetzeBeendenButton.setText("Ausgewählte Einsätze beenden");
 
@@ -328,7 +316,6 @@ public class Leitstellensystem extends JFrame {
                         "Info",
                         JOptionPane.INFORMATION_MESSAGE);
 
-                return;
             }
 
             // ===== FALL 2: Filter aktiv → nur angezeigte Einsätze löschen =====
@@ -338,7 +325,7 @@ public class Leitstellensystem extends JFrame {
                 throw new IllegalArgumentException("Keine gefilterten Einsätze vorhanden");
             }
 
-            // WICHTIG: von unten nach oben löschen!
+            // Zeilen von unten nach oben löschen
             for (int i = sichtbareZeilen - 1; i >= 0; i--) {
 
                 int modelIndex = einsatzTable.convertRowIndexToModel(i);
@@ -366,8 +353,6 @@ public class Leitstellensystem extends JFrame {
                     JOptionPane.ERROR_MESSAGE);
         }
     }
-
-
 
     // ==============================
     // MAIN-Methode
