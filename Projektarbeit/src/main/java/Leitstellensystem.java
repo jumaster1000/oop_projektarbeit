@@ -3,6 +3,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.TableRowSorter;
 import javax.swing.RowFilter;
 
@@ -295,11 +296,9 @@ public class Leitstellensystem extends JFrame {
             }
 
             // Filter anwenden
-            if(columnIndex == 3) {
-                sorter.setRowFilter(RowFilter.regexFilter("(?i)" + suchbegriff, columnIndex));
-            } else {
-                sorter.setRowFilter(RowFilter.regexFilter("(?i)" + suchbegriff, columnIndex));
-            }
+
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + suchbegriff, columnIndex));
+
 
             // Button-Zustände aktualisieren
             filterButton.setText("Filter löschen");
@@ -377,7 +376,49 @@ public class Leitstellensystem extends JFrame {
     // Sortieren
     // ------------------------------
     public void alphabetischSortieren(){
+        try {
+            String spalte = filternComboBox.getSelectedItem().toString();
 
+            if (spalte.equals("- Spalte auswählen")) {
+                throw new IllegalArgumentException("Bitte Spalte zum Sortieren auswählen");
+            }
+            int columnIndex;
+            switch (spalte) {
+                case "Stichwort":
+                    columnIndex = 0;
+                    break;
+                case "Adresse":
+                    columnIndex = 1;
+                    break;
+                case "Bemerkung":
+                    columnIndex = 2;
+                    break;
+                case "Ort":
+                    columnIndex = 3;
+                    break;
+                case "MiG":
+                    columnIndex = 4;
+                    break;
+                case "Signalfahrt":
+                    columnIndex = 5;
+                    break;
+                default:
+                    throw new IllegalArgumentException("Ungültige Spalte");
+            }
+            sorter.setSortKeys(
+                    List.of(new RowSorter.SortKey(columnIndex, SortOrder.ASCENDING))
+            );
+
+            sorter.sort();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    e.getMessage(),
+                    "Fehler",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
     }
     // ------------------------------
     // MAIN-Methode
