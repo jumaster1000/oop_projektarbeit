@@ -15,16 +15,26 @@ public class Leitstellensystem extends JFrame {
     private JPanel hauptPanel;
 
     // Einsatz anlegen
+    private JLabel einsatzAnlegenLabel;
     // Adresse
+    private JLabel adresseLabel;
     private JTextField adresseTextField;
+    private JLabel hNrLabel;
     private JTextField hNrTextField;
+    private JLabel postleitzahlLabel;
     private JTextField plzTextField;
+    private JLabel ortLabel;
     private JTextField ortTextField;
 
     // Zusatzinformationen
+    private JLabel leitstelleIcon;
+    private JLabel stichwortLabel;
+    private JLabel bemerkungLabel;
     private JTextField bemerkungTextField;
+    private JLabel MiGLabel;
     private JCheckBox miGCheckBox;
     private JComboBox stichwortComboBox;
+    private JLabel signalfahrtLabel;
     private JCheckBox signalfahrtCheckBox;
 
     // Buttons
@@ -37,11 +47,14 @@ public class Leitstellensystem extends JFrame {
     private ArrayList<Einsatz> einsatzListe = new ArrayList<>();;
 
     // Filter
+    private JLabel fiterLabel;
+    private JLabel suchbegriffEingebenLabel;
     private JTextField filterTextField;
     private JButton filterButton;
     private JComboBox filternComboBox;
     private JButton einsaetzeBeendenButton;
     private TableRowSorter<DefaultTableModel> sorter;
+    private JLabel laufendeEinsaetzeLabel;
 
     // ==============================
     // Konstruktor
