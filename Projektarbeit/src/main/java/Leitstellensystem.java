@@ -255,6 +255,7 @@ public class Leitstellensystem extends JFrame {
                 filterTextField.setText("");
                 filterButton.setText("Filter setzen");
                 einsaetzeBeendenButton.setText("Alle Einsätze beenden");
+                return;
             }
 
             // FALL 2: Filter setzen
