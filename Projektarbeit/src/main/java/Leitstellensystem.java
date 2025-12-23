@@ -265,13 +265,26 @@ public class Leitstellensystem extends JFrame {
             int columnIndex;
 
             switch (spalte) {
-                case "Stichwort" -> columnIndex = 0;
-                case "Adresse" -> columnIndex = 1;
-                case "Bemerkung" -> columnIndex = 2;
-                case "Ort" -> columnIndex = 3;
-                case "MiG" -> columnIndex = 4;
-                case "Signalfahrt" -> columnIndex = 5;
-                default -> throw new IllegalArgumentException("Ungültige Spalte");
+                case "Stichwort":
+                    columnIndex = 0;
+                    break;
+                case "Adresse":
+                    columnIndex = 1;
+                    break;
+                case "Bemerkung":
+                    columnIndex = 2;
+                    break;
+                case "Ort":
+                    columnIndex = 3;
+                    break;
+                case "MiG":
+                    columnIndex = 4;
+                    break;
+                case "Signalfahrt":
+                    columnIndex = 5;
+                    break;
+                default:
+                    throw new IllegalArgumentException("Ungültige Spalte");
             }
 
             // Filter anwenden
