@@ -8,33 +8,23 @@ import javax.swing.RowFilter;
 
 
 public class Leitstellensystem extends JFrame {
-    // ==============================
+    // ------------------------------
     // Attribute Initialisieren
-    // ==============================
+    // ------------------------------
     // Haupt Panel
     private JPanel hauptPanel;
 
-    // Einsatz anlegen
-    private JLabel einsatzAnlegenLabel;
+
     // Adresse
-    private JLabel adresseLabel;
     private JTextField adresseTextField;
-    private JLabel hNrLabel;
     private JTextField hNrTextField;
-    private JLabel postleitzahlLabel;
     private JTextField plzTextField;
-    private JLabel ortLabel;
     private JTextField ortTextField;
 
     // Zusatzinformationen
-    private JLabel leitstelleIcon;
-    private JLabel stichwortLabel;
-    private JLabel bemerkungLabel;
     private JTextField bemerkungTextField;
-    private JLabel MiGLabel;
     private JCheckBox miGCheckBox;
     private JComboBox stichwortComboBox;
-    private JLabel signalfahrtLabel;
     private JCheckBox signalfahrtCheckBox;
 
     // Buttons
@@ -47,18 +37,15 @@ public class Leitstellensystem extends JFrame {
     private ArrayList<Einsatz> einsatzListe = new ArrayList<>();;
 
     // Filter
-    private JLabel fiterLabel;
-    private JLabel suchbegriffEingebenLabel;
     private JTextField filterTextField;
     private JButton filterButton;
     private JComboBox filternComboBox;
     private JButton einsaetzeBeendenButton;
     private TableRowSorter<DefaultTableModel> sorter;
-    private JLabel laufendeEinsaetzeLabel;
 
-    // ==============================
+    // ------------------------------
     // Konstruktor
-    // ==============================
+    // ------------------------------
     public Leitstellensystem(){
         // Demo-Einsätze erstellen
         initObjekte();
@@ -135,9 +122,9 @@ public class Leitstellensystem extends JFrame {
         });
     } // Ende Konstruktor
 
-    // ==============================
+    // ------------------------------
     // Demo-Einsätze
-    // ==============================
+    // ------------------------------
     public void initObjekte(){
         einsatzListe.add(new Einsatz(
                 "Münchner Straße", "12", 89073, "Ulm",
@@ -158,9 +145,9 @@ public class Leitstellensystem extends JFrame {
         ));
     }
 
-    // ==============================
+    // ------------------------------
     // Button: Eingabe Löschen
-    // ==============================
+    // ------------------------------
     public void eingabeLoeschen(){
         adresseTextField.setText("");
         hNrTextField.setText("");
@@ -173,9 +160,9 @@ public class Leitstellensystem extends JFrame {
     }
 
 
-    // ==============================
+    // ------------------------------
     // Button: Alarmieren
-    // ==============================
+    // ------------------------------
     public void alarmieren(){
         try {
             // Daten aus dem Formular abspeichern
@@ -246,13 +233,13 @@ public class Leitstellensystem extends JFrame {
         }
     }
 
-    // ==============================
+    // ------------------------------
     // Einsätze filtern
-    // ==============================
+    // ------------------------------
     public void filtern() {
         try {
 
-            // ===== FALL 1: Filter ist aktiv → Filter löschen =====
+            // FALL 1: Filter ist aktiv → Filter löschen
             if (filterButton.getText().equals("Filter löschen")) {
 
                 sorter.setRowFilter(null); // Filter entfernen
@@ -262,11 +249,11 @@ public class Leitstellensystem extends JFrame {
                 einsaetzeBeendenButton.setText("Alle Einsätze beenden");
             }
 
-            // ===== FALL 2: Filter setzen =====
+            // FALL 2: Filter setzen
             String spalte = filternComboBox.getSelectedItem().toString();
             String suchbegriff = filterTextField.getText();
 
-            // --- Eingaben prüfen ---
+            // Eingaben prüfen
             if (spalte.equals("- Spalte auswählen")) {
                 throw new IllegalArgumentException("Bitte Spalte auswählen");
             }
@@ -287,7 +274,7 @@ public class Leitstellensystem extends JFrame {
                 default -> throw new IllegalArgumentException("Ungültige Spalte");
             }
 
-            // Filter anwenden (case-insensitive)
+            // Filter anwenden
             if(columnIndex == 3) {
                 sorter.setRowFilter(RowFilter.regexFilter("(?i)" + suchbegriff, columnIndex));
             } else {
@@ -308,13 +295,13 @@ public class Leitstellensystem extends JFrame {
         }
     }
 
-    // ==============================
+    // ------------------------------
     // Einsätze beenden
-    // ==============================
+    // ------------------------------
     public void einsaetzeBeenden() {
         try {
 
-            // ===== FALL 1: Kein Filter aktiv → alle Einsätze löschen =====
+            // FALL 1: Kein Filter aktiv → alle Einsätze löschen
             if (filterButton.getText().equals("Filter setzen")) {
 
                 if (einsatzListe.isEmpty()) {
@@ -331,7 +318,7 @@ public class Leitstellensystem extends JFrame {
 
             }
 
-            // ===== FALL 2: Filter aktiv → nur angezeigte Einsätze löschen =====
+            // FALL 2: Filter aktiv → nur angezeigte Einsätze löschen
             int sichtbareZeilen = einsatzTable.getRowCount();
 
             if (sichtbareZeilen == 0) {
