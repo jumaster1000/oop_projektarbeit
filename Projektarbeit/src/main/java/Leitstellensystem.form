@@ -10,7 +10,7 @@
     </properties>
     <border type="none"/>
     <children>
-      <component id="cd82d" class="javax.swing.JLabel" binding="adresseLabel">
+      <component id="cd82d" class="javax.swing.JLabel">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="-1" height="17"/>
@@ -20,7 +20,7 @@
           <text value="Adresse:"/>
         </properties>
       </component>
-      <component id="87f13" class="javax.swing.JLabel" binding="stichwortLabel">
+      <component id="87f13" class="javax.swing.JLabel">
         <constraints>
           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="-1" height="17"/>
@@ -30,7 +30,7 @@
           <text value="Stichwort:"/>
         </properties>
       </component>
-      <component id="2ff65" class="javax.swing.JLabel" binding="signalfahrtLabel">
+      <component id="2ff65" class="javax.swing.JLabel">
         <constraints>
           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="-1" height="17"/>
@@ -40,7 +40,7 @@
           <text value="Signalfahrt:"/>
         </properties>
       </component>
-      <component id="81f7a" class="javax.swing.JLabel" binding="laufendeEinsaetzeLabel">
+      <component id="81f7a" class="javax.swing.JLabel">
         <constraints>
           <grid row="8" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -49,7 +49,7 @@
           <text value="Laufende Einsätze:"/>
         </properties>
       </component>
-      <component id="5e074" class="javax.swing.JLabel" binding="einsatzAnlegenLabel">
+      <component id="5e074" class="javax.swing.JLabel">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="-1" height="19"/>
@@ -60,7 +60,7 @@
           <text value="Einsatz anlegen:"/>
         </properties>
       </component>
-      <component id="66c82" class="javax.swing.JLabel" binding="bemerkungLabel">
+      <component id="66c82" class="javax.swing.JLabel">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -117,7 +117,7 @@
           </component>
         </children>
       </scrollpane>
-      <component id="3f722" class="javax.swing.JLabel" binding="MiGLabel">
+      <component id="3f722" class="javax.swing.JLabel">
         <constraints>
           <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="-1" height="17"/>
@@ -127,7 +127,7 @@
           <text value="Menschenleben in Gefahr? (MiG)"/>
         </properties>
       </component>
-      <component id="86f16" class="javax.swing.JLabel" binding="hNrLabel">
+      <component id="86f16" class="javax.swing.JLabel">
         <constraints>
           <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="-1" height="17"/>
@@ -147,7 +147,7 @@
           <text value="29"/>
         </properties>
       </component>
-      <component id="e1201" class="javax.swing.JLabel" binding="postleitzahlLabel">
+      <component id="e1201" class="javax.swing.JLabel">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="-1" height="17"/>
@@ -169,7 +169,7 @@
           <text value="89075"/>
         </properties>
       </component>
-      <component id="84a35" class="javax.swing.JLabel" binding="ortLabel">
+      <component id="84a35" class="javax.swing.JLabel">
         <constraints>
           <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="-1" height="17"/>
@@ -232,7 +232,7 @@
           <text value="Rauch aus Fenster sichtbar; POL vor Ort"/>
         </properties>
       </component>
-      <component id="2a936" class="javax.swing.JLabel" binding="leitstelleIcon">
+      <component id="2a936" class="javax.swing.JLabel">
         <constraints>
           <grid row="0" column="8" row-span="4" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="1" use-parent-layout="false"/>
         </constraints>
@@ -241,7 +241,7 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="93162" class="javax.swing.JLabel" binding="fiterLabel">
+      <component id="93162" class="javax.swing.JLabel">
         <constraints>
           <grid row="2" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -266,7 +266,7 @@
           </model>
         </properties>
       </component>
-      <component id="8b965" class="javax.swing.JLabel" binding="suchbegriffEingebenLabel">
+      <component id="8b965" class="javax.swing.JLabel">
         <constraints>
           <grid row="4" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
