@@ -132,6 +132,7 @@ public class Leitstellensystem extends JFrame {
 
     // ------------------------------
     // Demo-Einsätze
+    // - Drei Einsätze werden als Demo in der Tabelle bei Start des Programmes ausgegeben
     // ------------------------------
     public void initObjekte(){
         einsatzListe.add(new Einsatz(
@@ -155,6 +156,7 @@ public class Leitstellensystem extends JFrame {
 
     // ------------------------------
     // Button: Eingabe Löschen
+    // - Die Eingabefelder werden zurückgesetzt
     // ------------------------------
     public void eingabeLoeschen(){
         adresseTextField.setText("");
@@ -170,6 +172,8 @@ public class Leitstellensystem extends JFrame {
 
     // ------------------------------
     // Button: Alarmieren
+    // - Die eingegebenen Informationen werden in ein Objekt gespeichert. Das neu erstellte Objekt wird
+    // in der Tabelle ausgegeben
     // ------------------------------
     public void alarmieren(){
         try {
@@ -178,7 +182,7 @@ public class Leitstellensystem extends JFrame {
             String hausNr = hNrTextField.getText();
             String ort = ortTextField.getText();
 
-            // Pflichtfelder prüfen (leer?)
+            // Pflichtfelder prüfen
             if (adresse.isEmpty() || hausNr.isEmpty() || ort.isEmpty() || plzTextField.getText().isEmpty()) {
                 throw new IllegalArgumentException("Bitte alle Felder ausfüllen");
             }
@@ -194,10 +198,9 @@ public class Leitstellensystem extends JFrame {
                 throw new IllegalArgumentException("PLZ muss 5-stellig sein");
             }
 
-
             int plz = Integer.parseInt(plzTextField.getText());
 
-            // Weitere Felder
+            // Weitere Felder prüfen
             String bemerkung = bemerkungTextField.getText();
             if (bemerkung.equals("- hier Bemerkung einfügen -")) {
                 bemerkung = "- keine Angabe";
@@ -211,8 +214,7 @@ public class Leitstellensystem extends JFrame {
                 throw new IllegalArgumentException("Wähle ein Stichwort aus");
             }
 
-
-            // Objekt erstellen -> siehe Klasse 'Einsatz'
+            // Objekt erstellen - siehe Klasse 'Einsatz'
             Einsatz einsatz = new Einsatz(adresse, hausNr, plz, ort, bemerkung, miG, stichwort, signalfahrt);
 
             // Objekt in Array Liste speichern
@@ -224,8 +226,8 @@ public class Leitstellensystem extends JFrame {
                     einsatz.getAdresse() + " " + einsatz.getHausNr(),
                     einsatz.getBemerkung(),
                     einsatz.getOrt() + " (" + einsatz.getPlz() + ")",
-                    einsatz.getMiG() ? "Ja" : "Nein",
-                    einsatz.getSignalfahrt() ? "Ja" : "Nein"
+                    einsatz.getMiG() ? "Ja" : "Nein", // MHvKI
+                    einsatz.getSignalfahrt() ? "Ja" : "Nein" // MHvKI
             });
 
             JOptionPane.showMessageDialog(this,
@@ -243,13 +245,12 @@ public class Leitstellensystem extends JFrame {
 
     // ------------------------------
     // Einsätze filtern
+    // - Nach einer Auswahl einer Spalte und Eingabe eines Suchbegriffs wird die Tabelle gefiltert
     // ------------------------------
     public void filtern() {
         try {
-
-            // FALL 1: Filter ist aktiv → Filter löschen
+            // --- FALL 1: Filter ist aktiv → Filter löschen
             if (filterButton.getText().equals("Filter löschen")) {
-
                 sorter.setRowFilter(null); // Filter entfernen
                 filternComboBox.setSelectedItem("- Spalte auswählen");
                 filterTextField.setText("");
@@ -258,7 +259,7 @@ public class Leitstellensystem extends JFrame {
                 return;
             }
 
-            // FALL 2: Filter setzen
+            // --- FALL 2: Filter setzen
             String spalte = filternComboBox.getSelectedItem().toString();
             String suchbegriff = filterTextField.getText();
 
@@ -271,6 +272,7 @@ public class Leitstellensystem extends JFrame {
                 throw new IllegalArgumentException("Bitte Suchbegriff eingeben");
             }
 
+            // Spaltenindex speichern
             int columnIndex;
 
             switch (spalte) {
@@ -297,9 +299,7 @@ public class Leitstellensystem extends JFrame {
             }
 
             // Filter anwenden
-
-            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + suchbegriff, columnIndex));
-
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + suchbegriff, columnIndex)); // MHvKI
 
             // Button-Zustände aktualisieren
             filterButton.setText("Filter löschen");
@@ -307,16 +307,14 @@ public class Leitstellensystem extends JFrame {
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(
-                    this,
-                    e.getMessage(),
-                    "Fehler",
-                    JOptionPane.ERROR_MESSAGE
-            );
+                    this, e.getMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     // ------------------------------
     // Einsätze beenden
+    // - Wenn kein Filter gesetzt sind, wird die EinsatzListe komplett gelöscht, bei einem gesetzten Filter werden
+    // nur die gefilterten/angezeigten Einsätze aus der EinsatzListe gelöscht
     // ------------------------------
     public void einsaetzeBeenden() {
         try {
@@ -367,14 +365,12 @@ public class Leitstellensystem extends JFrame {
             einsaetzeBeendenButton.setText("Alle Einsätze beenden");
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,
-                    e.getMessage(),
-                    "Fehler",
-                    JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
         }
     }
     // ------------------------------
     // Sortieren
+    // - Nach Auswahl von einer Spalte wird die Tabelle alphabetisch sortiert
     // ------------------------------
     public void alphabetischSortieren(){
         try {
@@ -383,6 +379,8 @@ public class Leitstellensystem extends JFrame {
             if (spalte.equals("- Spalte auswählen")) {
                 throw new IllegalArgumentException("Bitte Spalte zum Sortieren auswählen");
             }
+
+            // Spaltenindex speichern
             int columnIndex;
             switch (spalte) {
                 case "Stichwort":
@@ -406,21 +404,18 @@ public class Leitstellensystem extends JFrame {
                 default:
                     throw new IllegalArgumentException("Ungültige Spalte");
             }
-            sorter.setSortKeys(
-                    List.of(new RowSorter.SortKey(columnIndex, SortOrder.ASCENDING))
-            );
 
-            sorter.sort();
+            sorter.setSortKeys(List.of(new RowSorter.SortKey(columnIndex, SortOrder.ASCENDING))); // MHvKI
+
+            sorter.sort(); // MHvKI
+
+            filternComboBox.setSelectedItem("- Spalte auswählen");
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(
-                    this,
-                    e.getMessage(),
-                    "Fehler",
-                    JOptionPane.ERROR_MESSAGE
-            );
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Fehler", JOptionPane.ERROR_MESSAGE);
         }
     }
+
     // ------------------------------
     // MAIN-Methode
     // ------------------------------
