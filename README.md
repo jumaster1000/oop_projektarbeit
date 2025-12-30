@@ -6,7 +6,7 @@
 
 ## Gliederung
 [1. Hintergrund (JU)](#1-hintergrund)<br>
-[2. Einführung GUI-Fenster](#2-einführung-gui-fenster) // GUI Gesamt als Bild und Kurz Sinn erläutern (JU)<br>
+[2. Einführung GUI-Fenster](#2-einführung-gui-fenster) (JU)<br>
 [3. Erklärung einzelne Bereiche des GUI-Fensters](#3-erklärung-der-einzelnen-bereiche-des-gui-fensters) (JU)<br>
 [4. Projektstruktur](#4-projektstruktur) (CO)<br>
 [5. Funktionalitäten](#5-funktionalitäten) (CO)<br>
