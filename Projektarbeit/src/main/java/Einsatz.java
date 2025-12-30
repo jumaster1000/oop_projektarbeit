@@ -27,4 +27,13 @@ public class Einsatz {
     public boolean getMiG(){return miG;}
     public String getStichwort(){return stichwort;}
     public boolean getSignalfahrt(){return signalfahrt;}
+
+   // Methoden für JUnit Test
+    public String Volladresse() {
+        return adresse + " " + hausNr + ", " + plz + " " + ort;
+    }
+    public boolean istDringend() {
+        return miG && signalfahrt;
+    }
 }
+
