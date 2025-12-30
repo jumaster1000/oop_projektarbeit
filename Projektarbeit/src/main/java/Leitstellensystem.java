@@ -17,16 +17,16 @@ public class Leitstellensystem extends JFrame {
 
 
     // Adresse
-    private JTextField adresseTextField;
-    private JTextField hNrTextField;
-    private JTextField plzTextField;
-    private JTextField ortTextField;
+    public JTextField adresseTextField;
+    public JTextField hNrTextField;
+    public JTextField plzTextField;
+    public JTextField ortTextField;
 
     // Zusatzinformationen
-    private JTextField bemerkungTextField;
-    private JCheckBox miGCheckBox;
-    private JComboBox stichwortComboBox;
-    private JCheckBox signalfahrtCheckBox;
+    public JTextField bemerkungTextField;
+    public JCheckBox miGCheckBox;
+    public JComboBox stichwortComboBox;
+    public JCheckBox signalfahrtCheckBox;
 
     // Buttons
     private JButton alarmierenButton;
@@ -35,7 +35,7 @@ public class Leitstellensystem extends JFrame {
     // Einsatzverwaltung
     private JTable einsatzTable;
     private DefaultTableModel tableModel;
-    private ArrayList<Einsatz> einsatzListe = new ArrayList<>();;
+    public ArrayList<Einsatz> einsatzListe = new ArrayList<>();;
 
     // Filter
     private JTextField filterTextField;
