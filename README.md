@@ -5,12 +5,14 @@
 >Bei dem Programm handelt es sich um ein Leitstellensystem (LSS) welches generell in Integrierten Leitstellen (ILS) der Feuerwehren und des Rettungsdienstes eingesetzt wird. Für diese Projektarbeit wurde das System im Vergleich zu einem reellen LSS vereinfacht.
 
 ### Gliederung
-1. Hintergrund
-2. Einführung GUI-Fenster
-3. 
-4.
-
-
+1. Hintergrund (JU)
+2. Einführung GUI-Fenster // GUI Gesamt als Bild und Kurz Sinn erläutern (JU)
+3. Erklärung einzelne Bereiche des GUI-Fensters (JU)
+4. Projektstruktur (CO)
+5. Funktionalitäten (CO) 
+6. JUnit Test (JU)
+7. Ausführen des Programms (JU)
+8. Autoren (JU)
 
 ### Hintergrund:
 Über eine ILS wird die europaweite Notrufnummer 112 entgegengenommen. Welche Leitstelle damit erreicht wird, entscheidet sich durch die Mobilfunkmasten in denen das Handy eingewählt ist oder durch die Adresse bei der ein Festnetzanschluss registriert ist. Die verschiedenen Leitstellen werden nach Kommunen und den Landkreisen aufgeteilt. In Ulm ist die ILS in die Hauptfeuerwache der Feuerwehr Ulm in der Keplerstraße 38 in der Oststadt integriert. Diese ILS ist für das Stadtgebiet Ulm, sowie für den Alb-Donau Kreis zuständig. Für Neu-Ulm ist die ILS Donau-Iller zuständig, welche in Krumbach lokalisiert ist. Sollte man, z.B. weil man direkt an der Donau auf der Neu-Ulmer Seite steht in der ILS in Ulm rauskommen, wird der Anruf von dem Leitstellendisponenten direkt in die ILS Donau-Iller weitergeleitet. Die Notrufnummer 110 der Polizei wird nicht über die ILS sondern über das Führungs- und Lagezentrum (FLZ) des jewiligen Polizeipräsidiums bedient. 
