@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class EinsatzTest {
     // Test für vollständige Adresse
     @Test
-    void Volladresse() {
+    void volladresse() {
         Einsatz e = new Einsatz(
                 "Münchner Straße",
                 "12",
@@ -18,7 +18,7 @@ class EinsatzTest {
         );
 
         // Act (Methode ausführen)
-        String adresse = e.Volladresse();
+        String adresse = e.volladresse();
 
         // Assert (Ergebnis überprüfen)
         assertEquals("Münchner Straße 12, 89073 Ulm", adresse);

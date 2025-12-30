@@ -29,7 +29,7 @@ public class Einsatz {
     public boolean getSignalfahrt(){return signalfahrt;}
 
    // Methoden für JUnit Test
-    public String Volladresse() {
+    public String volladresse() {
         return adresse + " " + hausNr + ", " + plz + " " + ort;
     }
     public boolean istDringend() {
