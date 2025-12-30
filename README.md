@@ -11,7 +11,7 @@
 [4. Projektstruktur](#4-projektstruktur) (CO)<br>
 [5. Funktionalitäten](#5-funktionalitäten) (CO)<br>
 [6. JUnit Test](#6-junit-test) (JU)<br>
-[7. Ausführen](#7-ausführen-des-programms) des Programms (JU)<br>
+[7. Ausführen des Programms](#7-ausführen-des-programms) (JU)<br>
 [8. Autoren](#8-autoren) (JU)<br>
 
 ## 1. Hintergrund
