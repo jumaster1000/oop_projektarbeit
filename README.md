@@ -86,29 +86,146 @@ Einsätze beendet
 #### [↑ zurück zur Gliederung](#Gliederung)
 
 ## 4. Projektstruktur
-Das Projekt besteht aus zwei zentralen Klassen. Die Klasse Einsatz dient als Bauplan für einzelne Einsätze und speichert 
-alle einsatzrelevanten Informationen. Die Klasse Leitstellensystem fasst die grafische Benutzeroberfläche sowie die 
-komplette Steuerungslogik des Systems zusammen und greift auf die erzeugten Einsatzobjekte zu.
+Das Projekt besteht aus zwei zentralen Klassen:
 
+- `Einsatz`: Datenklasse (Bauplan) für einen einzelnen Einsatz mit allen einsatzrelevanten Informationen.
+- `Leitstellensystem`: GUI + Steuerungslogik (Verarbeitung der Eingaben und Verwaltung der Einsätze).
+
+---
 ### Klasse „Leitstellensystem“
-Die Klasse Leitstellensystem erbt von JFrame und stellt somit das Hauptfenster der Anwendung dar. Sie ist für die gesamte 
-Benutzerinteraktion, die Verarbeitung der Eingaben sowie die Verwaltung der Einsätze zuständig.
+Die Klasse `Leitstellensystem` erbt von `JFrame` und bildet damit das Hauptfenster der Anwendung.  
+Sie kümmert sich um die komplette Benutzerinteraktion (Buttons, Eingaben), verarbeitet die Formulardaten und verwaltet die laufenden Einsätze.
 
+---
 ### Klasse „Einsatz“
-Die Klasse Einsatz fungiert als Bauplan für einzelne Einsatzobjekte und beschreibt, welche Informationen ein Einsatz enthält.
+Die Klasse `Einsatz` dient als Bauplan für einzelne Einsatzobjekte.  
+Sie speichert die Daten eines Einsatzes (z.B. Adresse, Ort, PLZ, Stichwort, MiG, Signalfahrt) und stellt diese über Getter zur Verfügung.
 
+---
 ### Zusammenspiel der Klassen
-Die Klasse Einsatz wird innerhalb des Projekts ausschließlich als Datenobjekt verwendet. Sie enthält keine Logik zur 
-Darstellung oder Bedienung, sondern stellt lediglich strukturierte Einsatzinformationen bereit.
-Die Klasse Leitstellensystem erstellt neue Einsatzobjekte auf Basis der Benutzereingaben, speichert diese in einer Liste 
-und stellt die enthaltenen Daten in tabellarischer Form dar. Änderungen an den Einsätzen, wie das Filtern, Sortieren 
-oder Beenden, erfolgen zentral über die Klasse Leitstellensystem, greifen jedoch immer auf die zugrunde liegenden 
-Einsatzobjekte zu. Durch dieses Zusammenspiel bleibt die Datenstruktur klar vom Ablauf und der Oberfläche getrennt, 
-während gleichzeitig eine einfache und übersichtliche Verwaltung der Einsätze möglich ist.
+`Einsatz` wird im Projekt ausschließlich als Datenobjekt verwendet und enthält keine Logik für Darstellung oder Bedienung.  
+`Leitstellensystem` erstellt neue `Einsatz`-Objekte aus den Benutzereingaben, speichert sie in einer Liste und zeigt sie tabellarisch an.  
+Funktionen wie Filtern, Sortieren oder Beenden laufen zentral über `Leitstellensystem`, greifen dabei aber immer auf die zugrunde liegenden `Einsatz`-Objekte bzw. deren Daten zu.
+
 
 #### [↑ zurück zur Gliederung](#Gliederung)
 
 ## 5. Funktionalitäten
+### 5.1 Tabellenaufbau (JTable + TableModel)
+Die Einsatzübersicht wird als JTable umgesetzt. Damit die Tabelle Daten anzeigen kann, wird im Konstruktor zuerst ein `DefaultTableModel` erstellt, das die Spaltennamen festlegt und später die Zeilen (Einsätze) enthält.  
+Dieses Model wird anschließend mit `einsatzTable.setModel(tableModel)` an die JTable gebunden. Neue Einsätze werden später nicht „direkt“ in die JTable geschrieben, sondern immer über das Model (z.B. mit `tableModel.addRow(...)`). Dadurch bleibt die Datenhaltung der Tabelle sauber getrennt von der GUI-Anzeige.
+
+Daraus folgt:\
+ `JTable` = Anzeige (GUI)  
+ `DefaultTableModel` = Daten (Zeilen/Spalten)  
+ Änderungen passieren im Model (z.B. `addRow(...)`, `removeRow(...)`) und die `JTable` zeigt das dann automatisch an.
+
+**Read-only Tabelle:**  
+In diesem Projekt ist die Tabelle absichtlich nicht direkt editierbar, damit Einsätze nicht aus Versehen in der Übersicht geändert werden.  
+Das wird im Code über `einsatzTable.setDefaultEditor(Object.class, null);` umgesetzt.
+
+---
+### 5.2 Demo-Einsätze beim Start
+Damit die Anwendung nicht mit einer leeren Tabelle startet, werden beim Programmstart automatisch drei Demo-Einsätze angelegt.  
+Das passiert in der Methode `initObjekte()`: Dort werden mehrere `Einsatz`-Objekte erstellt und über `einsatzListe.add(...)` in der Liste `einsatzListe` (Typ: `ArrayList<Einsatz>`) gespeichert.
+
+Direkt danach werden diese Demo-Einsätze aus der `einsatzListe` ausgelesen und über `tableModel.addRow(...)` in das `DefaultTableModel` übernommen.  
+Da die JTable ihre Daten aus dem `DefaultTableModel` bekommt, erscheinen die Demo-Einsätze so direkt als Zeilen in der Einsatzübersicht.
+
+---
+### 5.3 Einsatz anlegen (*Alarmieren*)
+Über das Eingabeformular kann ein neuer Einsatz aufgenommen werden.  
+Beim Klick auf **Alarmieren** werden alle Werte aus den Feldern gelesen, geprüft und danach als neues Objekt der Klasse `Einsatz` gespeichert. Anschließend wird der Einsatz sowohl in die `einsatzListe` (interne Speicherung) als auch in die Tabelle eingetragen (`tableModel.addRow(...)`).
+
+Für die Ausgabe in der Tabelle werden die Werte aus dem `Einsatz`-Objekt über Getter wie `getStichwort()`, `getAdresse()` oder `getOrt()` ausgelesen. 
+
+**Bedingungen / Validierung**
+
+- **Pflichtfelder:** Adresse, Hausnummer, Ort und PLZ müssen ausgefüllt sein.
+- **PLZ-Prüfung:** Die PLZ darf nur aus Ziffern bestehen und muss 5-stellig sein.
+- **Stichwort:** Es muss ein Stichwort ausgewählt werden (nicht „- Stichwort auswählen -“).
+- **Bemerkung:** Wenn im Bemerkungsfeld nichts geändert wurde, wird „- keine Angabe“ gespeichert.
+
+Bei Erfolg erscheint eine Info-Meldung („Einsatzkräfte wurden alarmiert“), bei falschen Eingaben eine Fehlermeldung als Dialogfenster.
+
+---
+### 5.4 Formular zurücksetzen (*Eingabe löschen*)
+Mit dem Button **Eingabe löschen** wird das komplette Formular wieder in den Ausgangszustand gesetzt:
+- Alle Textfelder werden geleert.
+- Checkboxen werden deaktiviert.
+- Die Stichwort-ComboBox springt zurück auf „- Stichwort auswählen -“.
+
+Das ist praktisch, wenn man sich vertippt hat oder ein Einsatz doch nicht aufgenommen werden soll.
+
+---
+### 5.5 Einsätze filtern
+
+Über die Filterfunktion kann die Einsatzübersicht gezielt durchsucht werden (z.B. nach *Ort*, *Adresse* oder *Stichwort*).  
+Technisch läuft das über einen `TableRowSorter`, der an der `JTable` hängt und das Filtern/Sichtbarmachen der Zeilen übernimmt.
+
+**Vorgehensweise**
+- Spalte in der ComboBox auswählen (also **wonach** gefiltert werden soll, z.B. „Adresse“).
+- Suchbegriff in das Textfeld eingeben (also **was** gesucht wird, z.B. „Karlstraße“).
+- Auf **Filter setzen** klicken.
+
+**Wie es technisch funktioniert**\
+Damit der Filter weiß, in welcher Spalte gesucht werden soll, wird die Auswahl aus der ComboBox im Code zuerst in einen **Spaltenindex** übersetzt.  
+Das passiert über ein `switch-case` (z.B. „Stichwort“ → Index `0`, „Adresse“ → `1`, „Ort“ → `3`, usw.), weil der Filter intern nicht mit Spaltennamen arbeitet, sondern mit Spaltennummern.
+
+Danach wird der Filter gesetzt über:
+
+>sorter.setRowFilter(RowFilter.regexFilter("(?i)" + suchbegriff, columnIndex));
+
+Dabei gilt vereinfacht:
+- Der `RowFilter` prüft jede Tabellenzeile in genau der ausgewählten Spalte (`columnIndex`).
+- Passt der Zellinhalt zum Suchbegriff, bleibt die Zeile sichtbar.
+- Passt er nicht, wird die Zeile ausgeblendet (nicht gelöscht).
+- Durch `(?i)` ist die Suche unabhängig von Groß-/Kleinschreibung (z.B. „ulm“ findet auch „Ulm“).
+
+**Bedingungen / Hinweise**
+-	Es muss eine Spalte ausgewählt werden (nicht „- Spalte auswählen“).
+-	Der Suchbegriff darf nicht leer sein.
+-	Wenn ein Filter aktiv ist, ändert sich der Button zu Filter löschen. Ein Klick darauf entfernt den Filter wieder und zeigt alle Einsätze an.
+
+---
+### 5.6 Alphabetisch sortieren
+Mit der Funktion **Alphabetisch sortieren** kann die Einsatzübersicht nach einer ausgewählten Spalte alphabetisch (A–Z) sortiert werden (z.B. nach *Ort* oder *Adresse*).  
+Dafür wird – wie beim Filtern – der `TableRowSorter` genutzt, der an der Tabelle hängt. Über ihn wird eine Sortierung für genau eine Spalte gesetzt und anschließend angewendet.
+
+**Vorgehensweise**
+- Spalte in der ComboBox auswählen (die Spalte, nach der sortiert werden soll).
+- Auf **Alphabetisch sortieren** klicken.
+
+**Wie es technisch funktioniert**
+Ähnlich wie beim Filtern wird die ausgewählte Spalte zuerst per `switch-case` in einen **Spaltenindex** übersetzt.  
+Danach wird im `TableRowSorter` ein Sortierschlüssel gesetzt (aufsteigend)
+>sorter.setSortKeys(List.of(new RowSorter.SortKey(columnIndex, SortOrder.ASCENDING) )); 
+>sorter.sort();
+
+und die Sortierung ausgeführt.
+
+**Bedingungen / Hinweise**
+- Es muss eine Spalte ausgewählt werden (nicht „- Spalte auswählen“).
+- Nach dem Sortieren wird die Spaltenauswahl wieder zurückgesetzt, damit nicht aus Versehen mehrfach mit alter Auswahl sortiert wird.
+
+---
+### 5.7 Einsätze beenden (alle oder gefilterte)
+Über den Button **Einsätze beenden** können Einsätze aus der Übersicht entfernt werden. Dabei werden die Einsätze nicht nur aus der Tabelle gelöscht, sondern auch aus der internen Liste `einsatzListe`, damit sie wirklich „beendet“ sind und nicht beim nächsten Schritt wieder auftauchen.
+
+Es gibt dabei zwei Fälle:
+
+**Kein Filter aktiv:** \
+Wenn gerade **kein** Filter gesetzt ist, werden alle laufenden Einsätze beendet. Dafür wird die `einsatzListe` geleert und die Tabelle komplett zurückgesetzt (alle Zeilen werden entfernt).
+
+**Filter aktiv:**  \
+Wenn ein Filter aktiv ist, werden nur die aktuell angezeigten (gefilterten) Einsätze beendet. Das ist praktisch, wenn man z.B. einen Einsatz in der XY-Straße beenden will, kann man erst nach *Adresse* filtern und dann nur diesen Einsatz schließen.
+
+**Wichtig (technisch):**  
+Bei aktivem Filter wird Zeile für Zeile gelöscht. Da die Tabelle durch Filter/Sortierung eine andere Reihenfolge anzeigen kann als das eigentliche Tabellenmodell, wird vor dem Löschen jeweils der sichtbare Zeilenindex in den Model-Index umgerechnet (`convertRowIndexToModel(...)`). So wird auch wirklich der richtige Einsatz aus `einsatzListe` und dem `tableModel` entfernt.
+
+Nach dem Beenden gefilterter Einsätze wird der Filter wieder zurückgesetzt (Suchfeld leer, ComboBox zurück, Button wieder auf **Filter setzen**), damit die Übersicht wieder im Normalzustand ist.
+
+#### [↑ zurück zur Gliederung](#Gliederung)
 
 ## 6. JUnit Test
 
@@ -121,7 +238,7 @@ Die Anwendung ist eine Desktop-Anwendung und benötigt keine zusätzliche Konfig
 
 #### [↑ zurück zur Gliederung](#Gliederung)
 
-## 8. Autoren 
+## 8. Autoren
 
 
 >Cosmo Stahn *(Matrikel Nr: 392305)* <br>
