@@ -228,6 +228,32 @@ Nach dem Beenden gefilterter Einsätze wird der Filter wieder zurückgesetzt (Su
 #### [↑ zurück zur Gliederung](#Gliederung)
 
 ## 6. JUnit Test
+Zur Überprüfung der zentralen Programmlogik wurden **JUnit-Tests** implementiert.  
+Diese Tests stellen sicher, dass wichtige Methoden der Klassen `Einsatz` und `Leitstellensystem` korrekt arbeiten.
+
+### 6.1 Testklasse `EinsatzTest`
+In der Testklasse `EinsatzTest` werden ausgewählte Methoden der Datenklasse `Einsatz` überprüft.
+
+Getestet werden:
+- die korrekte Zusammensetzung der vollständigen Adresse über die Methode `volladresse()`,
+- die Einstufung eines Einsatzes als dringend über die Methode `istDringend()`.
+
+Dabei werden sowohl positive als auch negative Testfälle berücksichtigt, um das erwartete Verhalten der Methoden eindeutig zu prüfen.
+
+---
+
+### 6.2 Testklasse `LeitstellensystemTest`
+Die Testklasse `LeitstellensystemTest` überprüft die grundlegende Funktion der Alarmierung.
+
+Es wird getestet, ob beim Ausführen der Methode `alarmieren()`:
+- ein neues `Einsatz`-Objekt erstellt wird,
+- und dieses korrekt zur internen Einsatzliste (`einsatzListe`) hinzugefügt wird.
+
+Dadurch wird sichergestellt, dass das Anlegen neuer Einsätze im System zuverlässig funktioniert.
+
+Die Tests sind bewusst überschaubar gehalten und konzentrieren sich auf die wichtigsten Kernfunktionen des Programms.
+
+#### [↑ zurück zur Gliederung](#Gliederung)
 
 ## 7. Ausführen des Programms
 Das Programm wird durch das Starten der Klasse `Leitstellensystem` ausgeführt.  
