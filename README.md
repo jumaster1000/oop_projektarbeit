@@ -92,12 +92,12 @@ Das Projekt besteht aus zwei zentralen Klassen:
 - `Leitstellensystem`: GUI + Steuerungslogik (Verarbeitung der Eingaben und Verwaltung der Einsätze).
 
 ---
-### Klasse „Leitstellensystem“
+### Klasse „Leitstellensystem“ (Controller-Klasse)
 Die Klasse `Leitstellensystem` erbt von `JFrame` und bildet damit das Hauptfenster der Anwendung.  
 Sie kümmert sich um die komplette Benutzerinteraktion (Buttons, Eingaben), verarbeitet die Formulardaten und verwaltet die laufenden Einsätze.
 
 ---
-### Klasse „Einsatz“
+### Klasse „Einsatz“ (Objekt-Klasse)
 Die Klasse `Einsatz` dient als Bauplan für einzelne Einsatzobjekte.  
 Sie speichert die Daten eines Einsatzes (z.B. Adresse, Ort, PLZ, Stichwort, MiG, Signalfahrt) und stellt diese über Getter zur Verfügung.
 
