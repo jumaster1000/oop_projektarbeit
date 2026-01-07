@@ -5,33 +5,33 @@
 >Bei dem Programm handelt es sich um ein Leitstellensystem (LSS) welches generell in Integrierten Leitstellen (ILS) der Feuerwehren und des Rettungsdienstes eingesetzt wird. Für diese Projektarbeit wurde das System im Vergleich zu einem reellen LSS vereinfacht.
 
 ## Gliederung
-[1. Hintergrund (JU)](#1-hintergrund)<br>
-[2. Einführung GUI-Fenster](#2-einführung-gui-fenster) (JU)<br>
-[3. Erklärung einzelne Bereiche des GUI-Fensters](#3-erklärung-der-einzelnen-bereiche-des-gui-fensters) (JU)<br>
-[4. Projektstruktur](#4-projektstruktur) (CO)<br>
-[5. Funktionalitäten](#5-funktionalitäten) (CO)<br>
-[6. JUnit Test](#6-junit-test) (JU)<br>
-[7. Ausführen des Programms](#7-ausführen-des-programms) (JU)<br>
-[8. Autoren](#8-autoren) (JU)<br>
+[1. Hintergrund](#1-hintergrund)<br>
+[2. Einführung GUI-Fenster](#2-einführung-gui-fenster)<br>
+[3. Erklärung einzelne Bereiche des GUI-Fensters](#3-erklärung-der-einzelnen-bereiche-des-gui-fensters)<br>
+[4. Projektstruktur](#4-projektstruktur)<br>
+[5. Funktionalitäten](#5-funktionalitäten)<br>
+[6. JUnit Test](#6-junit-test)<br>
+[7. Ausführen des Programms](#7-ausführen-des-programms)<br>
+[8. Autoren](#8-autoren)<br>
 
 ## 1. Hintergrund
-Über eine ILS wird die europaweite Notrufnummer 112 entgegengenommen. 
-Welche Leitstelle damit erreicht wird, entscheidet sich durch die Mobilfunkmasten in denen das Handy eingewählt ist oder 
-durch die Adresse bei der ein Festnetzanschluss registriert ist. Die verschiedenen Leitstellen werden nach Kommunen und 
-den Landkreisen aufgeteilt. In Ulm ist die ILS in die Hauptfeuerwache der Feuerwehr Ulm in der Keplerstraße 38 in der 
-Oststadt integriert. Diese ILS ist für das Stadtgebiet Ulm, sowie für den Alb-Donau Kreis zuständig. Für Neu-Ulm ist die 
-ILS Donau-Iller zuständig, welche in Krumbach lokalisiert ist. Sollte man, z.B. weil man direkt an der Donau auf der 
-Neu-Ulmer Seite steht in der ILS in Ulm rauskommen, wird der Anruf von dem Leitstellendisponenten direkt in die ILS 
-Donau-Iller weitergeleitet. Die Notrufnummer 110 der Polizei wird nicht über die ILS sondern über das Führungs- und 
-Lagezentrum (FLZ) des jewiligen Polizeipräsidiums bedient. 
+Über eine ILS wird die europaweite Notrufnummer 112 entgegengenommen.  
+Welche Leitstelle damit erreicht wird, entscheidet sich durch die Mobilfunkmasten, in denen das Handy eingewählt ist, oder  
+durch die Adresse, bei der ein Festnetzanschluss registriert ist. Die verschiedenen Leitstellen werden nach Kommunen und  
+Landkreisen aufgeteilt. In Ulm ist die ILS in die Hauptfeuerwache der Feuerwehr Ulm in der Keplerstraße 38 in der  
+Oststadt integriert. Diese ILS ist für das Stadtgebiet Ulm sowie für den Alb-Donau-Kreis zuständig. Für Neu-Ulm ist die  
+ILS Donau-Iller zuständig, welche in Krumbach lokalisiert ist. Sollte man z. B., weil man direkt an der Donau auf der  
+Neu-Ulmer Seite steht, in der ILS in Ulm rauskommen, wird der Anruf von dem Leitstellendisponenten direkt in die ILS  
+Donau-Iller weitergeleitet. Die Notrufnummer 110 der Polizei wird nicht über die ILS, sondern über das Führungs- und  
+Lagezentrum (FLZ) des jeweiligen Polizeipräsidiums bedient.
 
-Bei einem eingehenden Notruf wird der Anruf von einem Leitstellendisponenten entgegengenommen, dieser führt die bekannte 
-Notrufabfrage mit den W-Fragen durch und gibt die angegeben Daten in ein LLS ein. Sobald alle grundlegenden Daten wie 
-die Adresse und der Notfall klar sind, wählt der Disponent ein Alarmstichwort aus und nach einer festgelegten Alarm- und 
-Ausrückeordnung (AAO) werden entsprechende Einsatzkräfte alarmiert. Oft geschiet die Alarmierung während des Telefonats 
-und nach der Alarmierung werden weiterhin Informationen aufgenomern, diese werden weiterhin in das LSS eingegeben. Sind 
-die Einsatzkräfte auf dem Weg, können so weitere Informationen über die Funkverbindung nachgereicht werden, ohne wertvolle 
-Zeit zu verlieren. 
+Bei einem eingehenden Notruf wird der Anruf von einem Leitstellendisponenten entgegengenommen, dieser führt die bekannte  
+Notrufabfrage mit den W-Fragen durch und gibt die angegebenen Daten in ein LLS ein. Sobald alle grundlegenden Daten wie  
+die Adresse und der Notfall klar sind, wählt der Disponent ein Alarmstichwort aus, und nach einer festgelegten Alarm- und  
+Ausrückeordnung (AAO) werden entsprechende Einsatzkräfte alarmiert. Oft geschieht die Alarmierung während des Telefonats,  
+und nach der Alarmierung werden weiterhin Informationen aufgenommen; diese werden weiterhin in das LSS eingegeben. Sind  
+die Einsatzkräfte auf dem Weg, können so weitere Informationen über die Funkverbindung nachgereicht werden, ohne wertvolle  
+Zeit zu verlieren.
 
 #### [↑ zurück zur Gliederung](#Gliederung)
 
@@ -228,6 +228,32 @@ Nach dem Beenden gefilterter Einsätze wird der Filter wieder zurückgesetzt (Su
 #### [↑ zurück zur Gliederung](#Gliederung)
 
 ## 6. JUnit Test
+Zur Überprüfung der zentralen Programmlogik wurden **JUnit-Tests** implementiert.  
+Diese Tests stellen sicher, dass wichtige Methoden der Klassen `Einsatz` und `Leitstellensystem` korrekt arbeiten.
+
+### 6.1 Testklasse EinsatzTest
+In der Testklasse `EinsatzTest` werden ausgewählte Methoden der Datenklasse `Einsatz` überprüft.
+
+Getestet werden:
+- die korrekte Zusammensetzung der vollständigen Adresse über die Methode `volladresse()`,
+- die Einstufung eines Einsatzes als dringend über die Methode `istDringend()`.
+
+Dabei werden sowohl positive als auch negative Testfälle berücksichtigt, um das erwartete Verhalten der Methoden eindeutig zu prüfen.
+
+---
+
+### 6.2 Testklasse LeitstellensystemTest
+Die Testklasse `LeitstellensystemTest` überprüft die grundlegende Funktion der Alarmierung.
+
+Es wird getestet, ob beim Ausführen der Methode `alarmieren()`:
+- ein neues `Einsatz`-Objekt erstellt wird,
+- und dieses korrekt zur internen Einsatzliste (`einsatzListe`) hinzugefügt wird.
+
+Dadurch wird sichergestellt, dass das Anlegen neuer Einsätze im System zuverlässig funktioniert.
+
+Die Tests sind bewusst überschaubar gehalten und konzentrieren sich auf die wichtigsten Kernfunktionen des Programms.
+
+#### [↑ zurück zur Gliederung](#Gliederung)
 
 ## 7. Ausführen des Programms
 Das Programm wird durch das Starten der Klasse `Leitstellensystem` ausgeführt.  
