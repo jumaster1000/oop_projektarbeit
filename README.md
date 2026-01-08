@@ -276,5 +276,3 @@ Hochschule Neu-Ulm**<br>
 
 #### [↑ zurück zur Gliederung](#Gliederung)
 
-
-TEST TEST
