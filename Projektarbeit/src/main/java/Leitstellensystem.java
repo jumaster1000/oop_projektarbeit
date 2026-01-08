@@ -17,16 +17,16 @@ public class Leitstellensystem extends JFrame {
 
 
     // Adresse
-    public JTextField adresseTextField;
-    public JTextField hNrTextField;
-    public JTextField plzTextField;
-    public JTextField ortTextField;
+    public JTextField adresseTextField;     // eigentlich private, aber für JUnit Test Zugriff public
+    public JTextField hNrTextField;         // eigentlich private, aber für JUnit Test Zugriff public
+    public JTextField plzTextField;         // eigentlich private, aber für JUnit Test Zugriff public
+    public JTextField ortTextField;         // eigentlich private, aber für JUnit Test Zugriff public
 
     // Zusatzinformationen
-    public JTextField bemerkungTextField;
-    public JCheckBox miGCheckBox;
-    public JComboBox stichwortComboBox;
-    public JCheckBox signalfahrtCheckBox;
+    public JTextField bemerkungTextField;   // eigentlich private, aber für JUnit Test Zugriff public
+    public JCheckBox miGCheckBox;           // eigentlich private, aber für JUnit Test Zugriff public
+    public JComboBox stichwortComboBox;     // eigentlich private, aber für JUnit Test Zugriff public
+    public JCheckBox signalfahrtCheckBox;   // eigentlich private, aber für JUnit Test Zugriff public
 
     // Buttons
     private JButton alarmierenButton;
@@ -35,7 +35,7 @@ public class Leitstellensystem extends JFrame {
     // Einsatzverwaltung
     private JTable einsatzTable;
     private DefaultTableModel tableModel;
-    public ArrayList<Einsatz> einsatzListe = new ArrayList<>();;
+    public ArrayList<Einsatz> einsatzListe = new ArrayList<>(); // eigentlich private, aber für JUnit Test Zugriff public
 
     // Filter
     private JTextField filterTextField;
