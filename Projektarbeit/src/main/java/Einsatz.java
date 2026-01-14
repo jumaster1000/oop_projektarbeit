@@ -1,12 +1,12 @@
 public class Einsatz {
-    public String adresse;
-    public String hausNr;
-    public int plz;
-    public String ort;
-    public String bemerkung;
-    public boolean miG;
-    public String stichwort;
-    public boolean signalfahrt;
+    private String adresse;
+    private String hausNr;
+    private int plz;
+    private String ort;
+    private String bemerkung;
+    private boolean miG;
+    private String stichwort;
+    private boolean signalfahrt;
 
     public Einsatz(String adresse, String hausNr, int plz, String ort, String bemerkung, boolean miG, String stichwort, boolean signalfahrt) {
         this.adresse = adresse;

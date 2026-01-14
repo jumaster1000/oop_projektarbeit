@@ -128,7 +128,7 @@ public class Leitstellensystem extends JFrame {
                 alphabetischSortieren();
             }
         });
-    } // Ende Konstruktor
+    }
 
     // ------------------------------
     // Demo-Einsätze
