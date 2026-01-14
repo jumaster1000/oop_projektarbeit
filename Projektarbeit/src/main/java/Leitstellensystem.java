@@ -183,7 +183,7 @@ public class Leitstellensystem extends JFrame {
             String ort = ortTextField.getText();
 
             // Pflichtfelder prüfen
-            if (adresse.isEmpty() || hausNr.isEmpty() || ort.isEmpty() || plzTextField.getText().isEmpty()) {
+            if (adresse.isEmpty() || hausNr.isEmpty() || ortTextField.getText().isEmpty() || plzTextField.getText().isEmpty()) {
                 throw new IllegalArgumentException("Bitte alle Felder ausfüllen");
             }
 
